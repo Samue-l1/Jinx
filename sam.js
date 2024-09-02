@@ -91,16 +91,16 @@ const primbon = new Primbon()
 const fg = require("api-dylux")
 const path = require("path")
 const cheerio = require("cheerio")
-const ytdl = require("ytdl-core")
+const ytdl = require("ytdl-sector")
 const chalk = require("chalk")
 const { color } = require("./lib/color")
 const FormData = require("form-data")
 const crypto = require("crypto")
-const yts = require("yt-search")
+const yts = require("sector-pack")
 const bochil = require("@bochilteam/scraper")
 const fakeUA = require("fake-useragent")
 const randomUA = fakeUA().toString()
-const fs = require("fs")
+const fs = require("fs-extra")
 module.exports = sam = handler = async (sam, m, chatUpdate, store) => {
 try {
 //=================================================//
@@ -752,6 +752,69 @@ case "jinx": {
   
  sam.sendMessage(m.chat, { video: { url: 'https://telegra.ph/file/615f4fe0243119de98dad.mp4' }, caption: `🦋${ucapanWaktu} \n🦄 𝐇𝐞𝐥𝐥𝐨 *${m.pushName}*, \n🦄 𝐈𝐭 𝐢𝐬 𝐦𝐞 𝐉𝐢𝐧𝐱\n🦄 𝐒𝐞𝐫𝐯𝐢𝐧𝐠 𝐚𝐭 𝐦𝐲 𝐛𝐞𝐬𝐭 \n🦄 𝐂𝐫𝐞𝐚𝐭𝐞𝐝 𝐛𝐲 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,fileLength: "9999999999898989899999999" }, { quoted: m });
  }
+break;
+case 'music':
+    case 'play2': {
+        if (!text) {
+            reply('𝐏𝐫𝐨𝐯𝐢𝐝𝐞 𝐚 𝐬𝐞𝐚𝐫𝐜𝐡 𝐭𝐞𝐫𝐦!\n𝐄.𝐠: 𝙷𝙴𝙰𝙳𝙻𝙸𝙶𝙷𝚃𝚂 𝙱𝚈 𝙰𝙻𝙰𝙽 𝚆𝙰𝙻𝙺𝙴𝚁')
+            return;
+        }
+        try {
+            const {
+                videos
+            } = await yts(text);
+            if (!videos || videos.length <= 0) {
+                reply(`No Matching videos found for : *${args[0]}*!!`)
+                return;
+            }
+            let urlYt = videos[0].url
+            let infoYt = await ytdl.getInfo(urlYt);
+            //30 MIN
+            if (infoYt.videoDetails.lengthSeconds >= 1800) {
+                reply(`𝑷𝒍𝒆𝒂𝒔𝒆 𝒔𝒊𝒓\𝑰'𝒎 𝒏𝒐𝒕 𝒂𝒃𝒍𝒆 𝒕𝒐 𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅 𝒕𝒉𝒂𝒕 𝒇𝒊𝒍𝒆. 🧞‍♂️`);
+                return;
+            }
+            const getRandonm = (ext) => {
+                return `${Math.floor(Math.random() * 10000)}${ext}`;
+            };
+            let titleYt = infoYt.videoDetails.title;
+            let randomName = getRandonm(".mp3");
+            const stream = ytdl(urlYt, {
+                    filter: (info) => info.audioBitrate == 160 || info.audioBitrate == 128,
+                })
+                .pipe(fs.createWriteStream(`./${randomName}`));
+            console.log("Audio downloading ->", urlYt);
+            // reply("Downloading.. This may take upto 5 min!");
+            await new Promise((resolve, reject) => {
+                stream.on("error", reject);
+                stream.on("finish", resolve);
+            });
+            
+            let stats = fs.statSync(`./${randomName}`);
+            let fileSizeInBytes = stats.size;
+            // Convert the file size to megabytes (optional)
+            let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+            console.log("Audio downloaded ! \n Size: " + fileSizeInMegabytes);
+            if (fileSizeInMegabytes <= 40) {
+                //sendFile(from, fs.readFileSync(`./${randomName}`), msg, { audio: true, jpegThumbnail: (await getBuffer(dl.meta.image)).buffer, unlink: true })
+                await zetsubo.sendMessage(
+                    from, {
+                        document: fs.readFileSync(`./${randomName}`),
+                        mimetype: "audio/mpeg",
+                        fileName: titleYt + ".mp3",
+			caption: "➻ 𝐁𝐘 𝐂𝐋𝐀𝐒𝐒𝐈𝐂_𝐁𝐎𝐓 ❖ ",    
+                    }, {
+                        quoted: m 
+                    }
+                );
+            } else {
+                reply(`File size bigger.`);
+            }
+            fs.unlinkSync(`./${randomName}`);
+        } catch (e) {
+            reply(e.toString())
+        }
+    }
 break;
 //========================================//
 case 'public': {
