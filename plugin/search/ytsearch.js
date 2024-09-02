@@ -34,17 +34,7 @@ module.exports = {
             };
             return sam.sendMessage(m.chat, buttonMessage, {
                 quoted: m,
-            
 
-          }                              
-                }
-            }, {});
-
-            await reaction(m.chat, '✅');
-        } catch (error) {
-            console.error('Error:', error);
-            await reply('Failed To Download your Music');
-            await reaction(m.chat, '❌');
-        }
+            });
     }
-};
+)
