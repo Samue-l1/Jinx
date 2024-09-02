@@ -10,13 +10,13 @@ module.exports = {
         const { q, sam, m, reply, reaction } = context;
 
         if (!q) {
-            await reply('Please provide a search query!\n\n*Example: play Kosoba by Tope Alabi*');
+            await reply('Please provide a search query!\n\n*Example: play headlights by alan Walker*');
             await reaction(m.chat, '❗');
             return;
         }
 
         try {
-            await reply(`JINX IS DOWNLOADING "${q}"...`);
+            await reply(`ᴘʟᴇᴀsᴇ ʙᴇ ᴄᴀʟᴍ ᴀs ᴊɪɴx  ᴘʀᴏᴄᴇss ʏᴏᴜʀ ʀᴇϙᴜᴇsᴛ....... "${q}"...`);
             await reaction(m.chat, '⬇️');
 
             const { videos } = await yts(q);
@@ -46,7 +46,7 @@ module.exports = {
                     }, { quoted: m });
                 fs.unlinkSync(audioPath);
                 await reaction(m.chat, '🦄');
-                await sam.sendMessage(m.chat, {text: `PROVIDED BY JINX 🦄\n> ABRO`})
+                await sam.sendMessage(m.chat, {text: ` ᴘʀᴏᴠɪᴅᴇᴅ ʙʏ ᴊɪɴx-ᴠ1 🦄\n> ᴄʀᴇᴅɪᴛs ᴀʙʀᴏ `})
             });
 
             writer.on('error', async (err) => {
