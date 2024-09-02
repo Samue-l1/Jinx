@@ -16,7 +16,7 @@ module.exports = {
         }
 
         try {
-            await reply(`JINX-V1 IS PROCESSING YOUR REQUEST SONG OF "${q}"...`);
+            await reply(`JINX IS DOWNLOADING "${q}"...`);
             await reaction(m.chat, '⬇️');
 
             const { videos } = await yts(q);
@@ -46,7 +46,7 @@ module.exports = {
                     }, { quoted: m });
                 fs.unlinkSync(audioPath);
                 await reaction(m.chat, '🦄');
-                await sam.sendMessage(m.chat, {text: `PROVIDED BY JINX-V1 🦄\n> ABRO`})
+                await sam.sendMessage(m.chat, {text: `PROVIDED BY JINX 🦄\n> ABRO`})
             });
 
             writer.on('error', async (err) => {
