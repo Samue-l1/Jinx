@@ -1,79 +1,69 @@
-const yts = require("yt-search");
-const { format } = require('util');
-
+const ytdl = require('ytdl-secktor')
+const fs = require('fs-extra')
+const yts = require('sector-pack')
+var videotime = 60000 // 1000 min
+var dlsize = 1000 // 1000mb
 module.exports = {
     type: 'search',
-    command: ['ytsearch', 'play'],
+    command: ['ytsearch'],
     operate: async (context) => {
-        const { q, sam, m, reply, reaction, crtImg } = context;
-
-        if (!q) {
-            await reply('Add Input !!!\n\n*Example : Arcane Jinx*');
-            await reaction(m.chat, '❗');
-            return;
+        const { q, sam, m, reply, reaction, crtImg,  } = context;
+  let yts = require("secktor-pack");
+        if (!text) return m.reply(`Example : ${prefix}yts ${tlang().title} WhatsApp Bot`);
+        let search = await yts(text);
+        let textt = "*YouTube Search*\n\n Result From " + text + "\n\n───────────────────\n";
+        let no = 1;
+        for (let i of search.all) {
+            textt += `⚡ No : ${no++}\n ❤Title : ${i.title}\n♫ Type : ${
+      i.type
+    }\n🙈Views : ${i.views}\n⌛Duration : ${
+      i.timestamp
+    }\n🌟Upload At : ${i.ago}\n👑Author : ${i.author.name}\n🎵Url : ${
+      i.url
+    }\n\n──────────────\n\n`;
         }
-
-        try {
-            await reaction(m.chat, '⬇️');
-
-            let anu = (await yts(q)).all;
-            let video = anu.filter(v => v.type === 'video');
-            let channel = anu.filter(v => v.type === 'channel');
-
-            let kocak = [];
-            let meks = 6;
-
-            for (let data of video) {
-                if (kocak.length >= meks) break;
-
-                let media = await crtImg(`https://i.ytimg.com/vi/${data.videoId}/default.jpg`);
-                kocak.push({
-                    body: { text: `${data.title}` },
-                    footer: {
-                        text: '© Jinx - 2024'
-                    },
-                    header: { hasMediaAttachment: true, imageMessage: media },
-                    nativeFlowMessage: {
-                        buttons: [{
-                            name: "single_select",
-                            buttonParamsJson: JSON.stringify({
-                                title: "Press To Select Option",
-                                sections: [{
-                                    title: "Select to Determine ( Audio or Video )",
-                                    rows: [{
-                                        header: "Download this as a Video",
-                                        title: `${data.title}`,
-                                        id: `.ytmp4 ${data.url}`
-                                    },
-                                    {
-                                        header: "Download this as an Audio ( Music )",
-                                        title: `${data.title}`,
-                                        id: `.ytmp3 ${data.url}`
-                                    }]
-                                }]
-                            })
-                        }]
-                    }
-                });
-            }
-
-            await sam.relayMessage(m.chat, {
-                viewOnceMessage: {
-                    message: {
-                        interactiveMessage: {
-                            body: { text: `Results from \`${q}\`` },
-                            footer: { text: "© Jinx - 2024" },
-                            carouselMessage: { cards: kocak }
-                        }
-                    }
-                }
-            }, {});
-
-            await reaction(m.chat, '🦄');
-        } catch (error) {
-            console.error('Error:', error);
-            await reply('Failed to download media from Instagram. Please try again later.');
-            await reaction(m.chat, '❌');
-        }
+        return sam.sendMessage(m.chat, {
+            image: {
+                url: search.all[0].thumbnail,
+            },
+            caption: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+        }, {
+            quoted: `JINX - V1`,
+        });
     }
-};
+)       
+module.exports = {
+    type: 'search',
+    command: ['song', 'play'],
+    operate: async (context) => {
+        const { q, sam, m, reply, reaction, crtImg,  } = context;
+
+     if (!text) return m.reply(`Use ${command} Back in Black`);
+            let yts = require("secktor-pack");
+            let search = await yts(text);
+            let anu = search.videos[0];
+            let buttonMessage = {
+                image: {
+                    url: anu.thumbnail,
+                },
+                caption: `
+╭───────────────◆
+│⿻ ${tlang().title} 
+│  *Youtube Player* ✨
+│⿻ *Title:* ${anu.title}
+│⿻ *Duration:* ${anu.timestamp}
+│⿻ *Viewers:* ${anu.views}
+│⿻ *Uploaded:* ${anu.ago}
+│⿻ *Author:* ${anu.author.name}
+╰────────────────◆
+⦿ *Url* : ${anu.url}
+`,
+                footer: tlang().footer,
+                headerType: 4,
+            };
+            return sam.sendMessage(m.chat, buttonMessage, {
+                quoted: m,
+            });
+
+        }
+    )
