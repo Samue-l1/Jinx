@@ -33,5 +33,6 @@ module.exports = {
             quoted: `JINX - V1`,
           
             });
+            }
     }
-)
+};
