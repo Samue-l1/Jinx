@@ -31,16 +31,7 @@ module.exports = {
             caption: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
         }, {
             quoted: `JINX - V1`,
-          }
-                    }
-                }
-            }, {});
-
-            await reaction(m.chat, '✅');
-        } catch (error) {
-            console.error('Error:', error);
-            await reply('Failed to download ');
-            await reaction(m.chat, '❌');
-        }
+          
+            });
     }
-};
+)
