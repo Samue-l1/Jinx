@@ -5,7 +5,7 @@ var videotime = 60000 // 1000 min
 var dlsize = 1000 // 1000mb
 module.exports = {
     type: 'search',
-    command: ['song', 'play'],
+    command: ['sonhsg', 'playyu'],
     operate: async (context) => {
         const { q, sam, m, reply, reaction, crtImg,  } = context;
 
