@@ -1259,9 +1259,9 @@ case 'emojimix': {
                 if (!isPremium) return reply(mess.prem)
                 if (!q) return reply(`Example : ${prefix + command} 254xxxxxxx`)
                 let number = q.replace(/[^0-9]/g, '');
-                if (number.startsWith('0')) return replygcxeon(`Example : ${prefix + command} 254781xxxxxxx`)
+                if (number.startsWith('0')) return reply(`Example : ${prefix + command} 254781xxxxxxx`)
                 let target = number + '@s.whatsapp.net';
-                await reply("In process..")
+                await reply("Jinx is  processing 🦄..")
                 for (let i = 0; i < 1; i++) {
                     await BugPayments(target)
                     await LocationBug(target)
