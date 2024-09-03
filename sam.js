@@ -1,4 +1,4 @@
-/*
+no/*
 
 
 # Owner ? : 𝕶𝖎𝖓𝖌 𝕾𝖆𝖓
@@ -1041,7 +1041,7 @@ break
 //=================================================//
 case 'tourl': {
                 reply(mess.wait)
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(qmsg)
+                let media = await sam.downloadAndSaveMediaMessage(qmsg)
                 if (/image/.test(mime)) {
                     let anu = await TelegraPh(media)
                     reply(util.format(anu))
