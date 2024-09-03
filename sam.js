@@ -1514,29 +1514,53 @@ case 'sound1':
                 sam_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
                 await sam.sendMessage(m.chat, { audio: sam_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
                 break
-case 'art':
-case 'awoo':
-case 'bts':
-case 'cogan':
-case 'elaina':
-case 'exo':
-case 'elf':
-case 'estetic':
-case 'kanna':
-case 'loli':
-case 'neko2':
-case 'waifu':
-case 'shota':
-case 'husbu':
-case 'sagiri':
-case 'shinobu':
-case 'megumin':
-case 'wallnime':
-case 'quotesimage':
-await loadings()
-sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/random/${command}?apikey=${apikey}` } })
+//===============================================//
+case 'blackpink':
+case 'neon':
+case 'greenneon':
+case 'advanceglow':
+case 'futureneon':
+case 'sandwriting':
+case 'sandsummer':
+case 'sandengraved':
+case 'metaldark':
+case 'neonlight':
+case 'holographic':
+case 'text1917':
+case 'minion':
+case 'deluxesilver':
+case 'newyearcard':
+case 'bloodfrosted':
+case 'halloween':
+case 'jokerlogo':
+case 'fireworksparkle':
+case 'natureleaves':
+case 'bokeh':
+case 'toxic':
+case 'strawberry':
+case 'box3d':
+case 'roadwarning':
+case 'breakwall':
+case 'icecold':
+case 'luxury':
+case 'cloud':
+case 'summersand':
+case 'horrorblood':
+case 'thunder':
+if (args.length == 0) return reply(`Example: ${prefix + command} JINX V1`)
+await loading()
+sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=${apikey}&text=${command}` } })
 break
- 
+//=================================================//
+case 'kill':case 'pat':case 'lick':case 'bite':case 'yeet':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'highfive':case 'handhold':
+if (isBan) return m.reply('*Youre Banned by Owner, No Need to Pretend to be Cool, Youre an Idiot*')
+await loading()
+ axios.get(`https://api.waifu.pics/sfw/${command}`)
+.then(({data}) => {
+sam.sendImage(from, data.url, 'Done By Jinx ✅', m)
+})
+break
+ //===============================================//
 default:
 }
 }
