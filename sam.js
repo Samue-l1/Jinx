@@ -1551,13 +1551,6 @@ if (args.length == 0) return reply(`Example: ${prefix + command} JINX V1`)
 sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=${apikey}&text=${command}` } })
 break
 //=================================================//
-case 'kill':case 'pat':case 'lick':case 'bite':case 'yeet':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'highfive':case 'handhold':{
-await loadings()
- axios.get(`https://api.waifu.pics/sfw/${command}`)
-.then(({data}) => {
-sam.sendImage(from, data.url, 'Done By Jinx ✅', m)
-})
-break
  //===============================================//
 default:
 }
