@@ -33,6 +33,7 @@
         "gradient-string": "^2.0.2",
         "human-readable": "^0.2.1",
         "jimp": "^0.16.13",
+        "object-query-string": "^1.2.0",
         "lodash": "^4.17.21",
         "lowdb": "^2.1.0",
         "moment-timezone": "^0.5.45",
