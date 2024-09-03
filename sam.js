@@ -998,7 +998,7 @@ case 'closegc':{
                     reply(close)
                 }, timer)
                 break
-case 'opengc':{
+case 'opengc': {
                 if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isCreator) return replygcxeon(mess.admin)
                 if (!isBotAdmins) return replygcxeon(mess.botAdmin)
@@ -1021,7 +1021,7 @@ case 'opengc':{
                     reply(open)
                 }, timer)
                 break
-case 'add':{
+case 'add': {
                 if (!m.isGroup) return replygcxeon(mess.group)
                 if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
                 if (!isBotAdmins) return reply(mess.botAdmin)
@@ -1029,14 +1029,14 @@ case 'add':{
                 await sam.groupParticipantsUpdate(m.chat, [blockwwww], 'add').then((res) => replygcxeon(json(res))).catch((err) => reply(json(err)))
                 break
 
-case 'promote':{
+case 'promote': {
                 if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
                 if (!isBotAdmins) return replygcxeon(mess.botAdmin)
                 let blockwwwww = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
                 await sam.groupParticipantsUpdate(m.chat, [blockwwwww], 'promote').then((res) => replygcxeon(json(res))).catch((err) => reply(json(err)))
                 break
-case 'demote':{
+case 'demote': {
                 if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
                 if (!isBotAdmins) return reply(mess.botAdmin)
@@ -1044,14 +1044,14 @@ case 'demote':{
                 await sam.groupParticipantsUpdate(m.chat, [blockwwwwwa], 'demote').then((res) => replygcxeon(json(res))).catch((err) => reply(json(err)))
                 break
 		
- case 'setname': case 'setsubject':{
+ case 'setname': case 'setsubject': {
               if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
                 if (!isBotAdmins) return replymess.botAdmin)
                 if (!text) return 'Text ?'
                 await sam.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(json(err)))
                break
-case 'setppgc':{
+case 'setppgc': {
             case 'setppgrup':
             case 'setppgc':
                 if (!m.isGroup) return reply(mess.group)
@@ -1090,7 +1090,7 @@ case 'setppgc':{
                     reply(mess.done)
                 }
                 break
-case 'hidetag':{
+case 'hidetag': {
                 if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
                 if (!isBotAdmins) return reply(mess.botAdmin)
@@ -1101,7 +1101,7 @@ case 'hidetag':{
                     quoted: m
                 })
                 break
-case 'editinfo':{
+case 'editinfo': {
                 if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
                 if (!isBotAdmins) return reply(mess.botAdmin)
@@ -1113,7 +1113,7 @@ case 'editinfo':{
                     reply(`Mode ${command}\n\n\nType ${prefix + command}on/off`)
                 }
                 break
-case 'linkgroup':{
+case 'linkgroup': {
             case 'invite':
             case 'link':
             case 'linkgc':
@@ -1125,9 +1125,8 @@ case 'linkgroup':{
                     detectLink: true
                 })
                 break
-case 'revoke':{
-            case 'resetlink':
-                if (!m.isGroup) return reply(mess.group)
+case 'revoke': {
+	if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
                 if (!isBotAdmins) return reply(mess.botAdmin)
                 await sam.groupRevokeInvite(m.chat)
@@ -1189,7 +1188,7 @@ case 'emojimix': {
                 break
 
                 break
-            case 'vv': case 'toviewonce':
+            case 'vv': case 'toviewonce': {
 		if (!quoted) return reply(`Reply Image/Video`)
                 if (/image/.test(mime)) {
                     anuan = await sam.downloadAndSaveMediaMessage(quoted)
@@ -1235,7 +1234,7 @@ case 'addowner': {
                 fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
                 reply(`Number ${bnnd} Has Become An Owner!!!`)
                 break
-            case 'delowner':
+            case 'delowner': {
                 if (!isDeveloper) return reply(mess.owner)
                 if (!args[0]) return reply(`Use ${prefix + command} nomor\nExample ${prefix + command} 2348140825959`)
                 ya = q.split("|")[0].replace(/[^0-9]/g, '')
