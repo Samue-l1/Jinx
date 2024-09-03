@@ -1054,7 +1054,7 @@ reply("Enter the number you want to unblock")
 }
 break
 case 'listblock':{
-let block = await tdx.fetchBlocklist()
+let block = await sam.fetchBlocklist()
 reply('✫ 𝐉𝐈𝐍𝐗 𝐁𝐋𝐎𝐂𝐊𝐄𝐃 𝐂𝐎𝐍𝐓𝐀𝐂𝐓𝐒 ⦾ :\n\n' + `➤𝐓𝐨𝐭𝐚𝐥 : ${block == undefined ? '➵ 𝐁𝐥𝐨𝐜𝐤𝐞𝐝' : '*' + block.length + '* 𝐅𝐮𝐜𝐤 𝐘𝐨𝐮 𝐁𝐥𝐨𝐜𝐤𝐞𝐝 𝐂𝐨𝐧𝐭𝐚𝐜𝐭𝐬'}\n` + block.map(v => '• ' + v.replace(/@.+/, '')).join`\n`)
 }
 break
@@ -1514,6 +1514,28 @@ case 'sound1':
                 sam_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
                 await sam.sendMessage(m.chat, { audio: sam_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
                 break
+case 'art':
+case 'awoo':
+case 'bts':
+case 'cogan':
+case 'elaina':
+case 'exo':
+case 'elf':
+case 'estetic':
+case 'kanna':
+case 'loli':
+case 'neko2':
+case 'waifu':
+case 'shota':
+case 'husbu':
+case 'sagiri':
+case 'shinobu':
+case 'megumin':
+case 'wallnime':
+case 'quotesimage':
+await loadings()
+sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/random/${command}?apikey=${apikey}` } })
+break
  
 default:
 }
