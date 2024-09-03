@@ -974,29 +974,7 @@ reply('✫ 𝐉𝐈𝐍𝐗 𝐁𝐋𝐎𝐂𝐊𝐄𝐃 𝐂𝐎𝐍𝐓𝐀�
 }
 break
 //========================================//
-               case 'closegc':{
-		if (!m.isGroup) return reply(`Use Jinx on gc`)
-                if (!isAdmins && !isDeveloper) return reply(`Only admins can use this cmd`)
-                if (!isBotAdmins) return reply(`Jinx at Work`)
-                if (args[1] == 'Second') {
-                    var timer = args[0] * `1000`
-                } else if (args[1] == 'Minutes') {
-                    var timer = args[0] * `60000`
-                } else if (args[1] == 'Hours') {
-                    var timer = args[0] * `3600000`
-                } else if (args[1] == 'Days') {
-                    var timer = args[0] * `86400000`
-                } else {
-                    return reply('*Choose:*\nsecond\nminute\nhour\nday\n\n*Example*\n10 second')
-                }
-                reply(`Close time ${q} starting from now`)
-                setTimeout(() => {
-                    var nomor = m.participant
-                    const close = `*Closed* group closed by admin\nnow only admin can send messages`
-                    sam.groupSettingUpdate(m.chat, 'announcement')
-                    reply(close)
-                }, timer)
-                break
+               
                case 'opengc': {
                 if (!m.isGroup) return reply(mess.group)
                 if (!isAdmins && !isCreator) return replygcxeon(mess.admin)
