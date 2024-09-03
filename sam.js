@@ -872,7 +872,173 @@ let block = await tdx.fetchBlocklist()
 reply('✫ 𝐉𝐈𝐍𝐗 𝐁𝐋𝐎𝐂𝐊𝐄𝐃 𝐂𝐎𝐍𝐓𝐀𝐂𝐓𝐒 ⦾ :\n\n' + `➤𝐓𝐨𝐭𝐚𝐥 : ${block == undefined ? '➵ 𝐁𝐥𝐨𝐜𝐤𝐞𝐝' : '*' + block.length + '* 𝐅𝐮𝐜𝐤 𝐘𝐨𝐮 𝐁𝐥𝐨𝐜𝐤𝐞𝐝 𝐂𝐨𝐧𝐭𝐚𝐜𝐭𝐬'}\n` + block.map(v => '• ' + v.replace(/@.+/, '')).join`\n`)
 }
 break
-//========================================//
+//=================================================//
+case 'swm': case 'steal': case 'stickerwm': case 'take': {
+                if (!args.join(" ")) return reply(`Where is the text?`)
+                const swn = args.join(" ")
+                const pcknm = swn.split("|")[0]
+                const atnm = swn.split("|")[1]
+                if (m.quoted.isAnimated === true) {
+                    sam.downloadAndSaveMediaMessage(quoted, "gifee")
+                    sam.sendMessage(from, { sticker: fs.readFileSync("gifee.webp") }, { quoted: m })
+                } else if (/image/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await sam.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return replygcxeon('Maximum 10 Seconds!')
+                    let media = await quoted.download()
+                    let encmedia = await sam.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+                } else {
+                    reply(`Photo/Video?`)
+                }
+            }
+                break
+//=================================================//
+case 'setppbot':{
+if (!isDeveloper) return
+await reaction(m.chat, "✨")
+if(m.quoted){
+const media = await sam.downloadAndSaveMediaMessage(quoted)
+const { img } = await generateProfilePicture(media)
+await sam.query({ tag: 'iq',  attrs: { to: botNumber, type:'set', xmlns: 'w:profile:picture'}, content: [{ tag: 'picture', attrs: { type: 'image' }, content: img }]})   
+await reply(`${mess.success}`)
+await reaction(m.chat, "🦄")
+} else reply("Reply photo")
+}
+break
+//=================================================//
+case 'delppbot': {
+if (!isDeveloper) return
+sam.removeProfilePicture(sam.user.id)
+reply(mess.succes)
+}
+break
+//=================================================//
+case 'setbiobot':{
+if (!isDeveloper) return
+if (!q) return reply(`Send commands ${prefix+command} name\n\nuse : ${command} jinx`)
+await sam.updateProfileStatus(q)
+await reply(`Please increase your status bio ke *${q}*`)
+}
+break
+//=================================================//
+case 'leavegc':{
+if (!isDeveloper) return
+if (!isGroup) return
+await sam.groupLeave(m.chat)
+}
+break
+//=================================================//
+case 'setppgroup': case 'setppgrup': case 'setppgc': {
+if (!isDeveloper) return reply(mess.usingsetpp)
+if (!isGroup) return reply(mess.ingroup)
+await reaction(m.chat, "✨")
+if (!isAdmins) return reply(mess.admin)
+if (!/image/.test(mime)) return reply(`Reply Image with Caption ${prefix + command}`)
+if (/webp/.test(mime)) return reply(`Reply Image with  Caption ${prefix + command}`)
+let media = await sam.downloadAndSaveMediaMessage(m)
+await sam.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
+reply('done')
+await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'editsubjek': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!q) return reply(`Example *${prefix + command} new*`);
+await reaction(m.chat, "🫥")
+await sam.groupUpdateSubject(m.chat, text)
+await reaction(m.chat, "✨")}
+break
+//=================================================//
+case 'editdesc': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!q) return reply(`Example *${prefix + command} king*`);
+await reaction(m.chat, "✨")
+await sam.groupUpdateDescription(m.chat, text)
+await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'antilink': case 'linkgc': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+await reaction(m.chat, "✨")
+let response = await sam.groupInviteCode(m.chat)
+sam.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`, m, { detectLink: true })
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'resetlinkgc': case 'revoke': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+await reaction(m.chat, "✨")
+sam.groupRevokeInvite(m.chat)
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'invite': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+await reaction(m.chat, "✨")
+let response = await sam.groupInviteCode(m.chat)
+reply(`https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`)
+await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'kick': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!isAdmins) return reply(mess.admin)
+await reaction(m.chat, "✨")
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await sam.groupParticipantsUpdate(m.chat, [users], 'remove')
+reply(mess.done)
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'add': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!isAdmins) return reply(mess.admin)
+await reaction(m.chat, "✨")
+let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await sam.groupParticipantsUpdate(m.chat, [users], 'add')
+reply(mess.done)
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'promote': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!isAdmins) return reply(mess.admin)
+await reaction(m.chat, "✨")
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await sam.groupParticipantsUpdate(m.chat, [users], 'promote')
+reply(mess.done)
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'demote': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!isAdmins) return reply(mess.admin)
+await reaction(m.chat, "✨")
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await sam.groupParticipantsUpdate(m.chat, [users], 'demote')
+reply(mess.done)
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
+case 'hidetag': {
+if (!isGroup) return reply(mess.ingroup)
+if (!isBotAdmins) return reply(mess.notadmin)
+if (!isAdmins) return reply(mess.admin)
+await reaction(m.chat, "✨")
+sam.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted:m})
+ await reaction(m.chat, "🦄")}
+break
+//=================================================//
  
 default:
 }
