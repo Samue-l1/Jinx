@@ -974,9 +974,8 @@ reply('✫ 𝐉𝐈𝐍𝐗 𝐁𝐋𝐎𝐂𝐊𝐄𝐃 𝐂𝐎𝐍𝐓𝐀�
 }
 break
 //========================================//
-// Group //
-case 'closegc':{
-                if (!m.isGroup) return replygcxeon(`Use Jinx on gc`)
+case 'closegc': {
+		if (!m.isGroup) return reply(`Use Jinx on gc`)
                 if (!isAdmins && !isDeveloper) return reply(`Only admins can use this cmd`)
                 if (!isBotAdmins) return reply(`Jinx at Work`)
                 if (args[1] == 'Second') {
@@ -1135,7 +1134,6 @@ case 'revoke': {
                     }).catch((err) => reply(json(err)))
                 break
 //=========================================================//
-//Other,//
 		case 'swm': case 'steal': case 'stickerwm': case 'take': {
                 if (!args.join(" ")) return reply(`Where is the text?`)
                 const swn = args.join(" ")
