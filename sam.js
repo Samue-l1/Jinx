@@ -1039,6 +1039,73 @@ sam.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.
  await reaction(m.chat, "🦄")}
 break
 //=================================================//
+case 'tourl': {
+                reply(mess.wait)
+                let media = await XeonBotInc.downloadAndSaveMediaMessage(qmsg)
+                if (/image/.test(mime)) {
+                    let anu = await TelegraPh(media)
+                    reply(util.format(anu))
+                } else if (!/image/.test(mime)) {
+                    let anu = await UploadFileUgu(media)
+                    reply(util.format(anu))
+                }
+                await fs.unlinkSync(media)
+
+            }
+                break
+case 'emojimix': {
+                let [emoji1, emoji2] = text.split`+`
+                if (!emoji1) return reply(`Example : ${prefix + command} ðŸ˜…+ðŸ¤”`)
+                if (!emoji2) return reply(`Example : ${prefix + command} ðŸ˜…+ðŸ¤”`)
+                reply(mess.wait)
+                let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
+                for (let res of anu.results) {
+                    let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, res.url, m, {
+                        packname: global.packname,
+                        author: global.author,
+                        categories: res.tags
+                    })
+                    await fs.unlinkSync(encmedia)
+                }
+            }
+                break
+case 'vv':
+            case 'toviewonce': {
+                if (!quoted) return reply(`Reply Image/Video`)
+                if (/image/.test(mime)) {
+                    anuan = await sam.downloadAndSaveMediaMessage(quoted)
+                    sam.sendMessage(m.chat, {
+                        image: {
+                            url: anuan
+                        },
+                        caption: `Magic from Jinx ✨`,
+                        fileLength: "999",
+                        viewOnce: true
+                    }, {
+                        quoted: m
+                    })
+                } else if (/video/.test(mime)) {
+                    anuanuan = await sam.downloadAndSaveMediaMessage(quoted)
+                    sam.sendMessage(m.chat, {
+                        video: {
+                            url: anuanuan
+                        },
+                        caption: `Here you go!`,
+                        fileLength: "99999999",
+                        viewOnce: true
+                    }, {
+                        quoted: m
+                    })
+                }
+            }
+                break
+case 'fliptext': {
+                if (args.length < 1) return reply(`Example:\n${prefix}fliptext Sam`)
+                quere = args.join(" ")
+                flipe = quere.split('').reverse().join('')
+                reply(`\`\`\`FLIP TEXT \`\`\`\n*> Normal :*\n${quere}\n> Flip :*\n${flipe}`)
+            }
+                break
  
 default:
 }
