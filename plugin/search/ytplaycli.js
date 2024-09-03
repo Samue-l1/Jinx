@@ -16,7 +16,7 @@ module.exports = {
         }
 
         try {
-            await reply(`ᴘʟᴇᴀsᴇ ʙᴇ ᴄᴀʟᴍ ᴀs ᴊɪɴx  ᴘʀᴏᴄᴇss ʏᴏᴜʀ ʀᴇϙᴜᴇsᴛ"${q}"...`);
+            await reply(`JINX IS DOWNLOADING "${q}"...`);
             await reaction(m.chat, '⬇️');
 
             const { videos } = await yts(q);
@@ -61,3 +61,4 @@ module.exports = {
         }
     }
 };
+                               
