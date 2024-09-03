@@ -160,7 +160,6 @@ const itsOrkay = JSON.parse(fs.readFileSync(path.resolve(__dirname, './premium.j
 const kontributor = JSON.parse(fs.readFileSync(path.resolve(__dirname, './owner.json'), 'utf8'))
 const isDeveloper = [ botNumber, ...kontributor, ...global.ownMain ].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
 const isPremium = [ botNumber, ...kontributor, ...itsOrkay, ...global.ownMain ].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
-const isBan = banned.includes(m.sender)
 //=================================================//
 //Group
 const groupMetadata = m.isGroup ? await sam.groupMetadata(m.chat).catch(e => {}) : ''
@@ -1552,9 +1551,8 @@ if (args.length == 0) return reply(`Example: ${prefix + command} JINX V1`)
 sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=${apikey}&text=${command}` } })
 break
 //=================================================//
-case 'kill':case 'pat':case 'lick':case 'bite':case 'yeet':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'highfive':case 'handhold':
-if (isBan) return m.reply('*Youre Banned by Owner, No Need to Pretend to be Cool, Youre an Idiot*')
-await loading()
+case 'kill':case 'pat':case 'lick':case 'bite':case 'yeet':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'highfive':case 'handhold':{
+await loadings()
  axios.get(`https://api.waifu.pics/sfw/${command}`)
 .then(({data}) => {
 sam.sendImage(from, data.url, 'Done By Jinx ✅', m)
