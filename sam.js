@@ -138,6 +138,7 @@ const { remini } = require("./lib/remini")
 const { toPTT, toAudio } = require("./lib/converter")
 const { UploadFileUgu, webp2mp4File, floNime, TelegraPh } = require("./lib/uploader")
 const { toTelegra } = require("./lib/upload")
+const photooxy = require('./lib/photooxy')
 //=================================================//
 const { groupMembers } = m
 var budy = (typeof m.text == "string" ? m.text : "")
@@ -1557,7 +1558,7 @@ case 'summersand':
 case 'horrorblood':
 case 'thunder':
 	if (args.length == 0) return reply(`Example: ${prefix + command} King Sam`)
-	client.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=cde5404984da80591a2692b6&text=${text}` } })
+	sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=cde5404984da80591a2692b6&text=${text}` } })
 	break;
 case 'shadow': 
 case 'write': 
@@ -1624,7 +1625,7 @@ break;
 case 'cry': case 'kill': case 'hug': case 'pat': case 'lick': 
 case 'kiss': case 'bite': case 'yeet': case 'bully': case 'bonk':
 case 'wink': case 'poke': case 'nom': case 'slap': case 'smile': 
-case 'wave': case 'awoo': case 'blush': case 'smug': case 'glomp': 
+case 'wave': case 'awoo': case 'blush': case 'wank': case 'glomp': 
 case 'happy': case 'dance': case 'cringe': case 'cuddle': case 'highfive': 
 case 'shinobu': case 'handhold': {
 axios.get(`https://api.waifu.pics/sfw/${command}`)
