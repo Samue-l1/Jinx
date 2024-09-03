@@ -528,6 +528,8 @@ let nest = `
  ┃ ✰ 𝐨𝐰𝐧𝐞𝐫𝐦𝐞𝐧𝐮
  ┃ ✰ 𝐩𝐢𝐧𝐠
  ┃ ✰ 𝐉𝐢𝐧𝐱
+ ┃ ✰ 𝐠𝐜-𝐦𝐞𝐧𝐮
+ ┃ ✰ 𝐨𝐭𝐡𝐞𝐫𝐦𝐞𝐧𝐮
  ┃ ✰ 𝐠𝐞𝐧𝐢𝐮𝐬-𝐣𝐢𝐧𝐱
  ┃ ✰ 𝐣𝐢𝐧𝐱-𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐬
  ┃ ✰ 𝐣𝐢𝐧𝐱-𝐜𝐨𝐧𝐯𝐞𝐫𝐭𝐬
@@ -555,6 +557,8 @@ mimetype: 'audio/mpeg'
 })
 }
 break
+
+
 case 'ownermenu':{
 await loadings()
 let timestamp = speed()
@@ -578,6 +582,10 @@ let nesy = `
  ┃ ✰ 𝐛𝐥𝐨𝐜𝐤
  ┃ ✰ 𝐮𝐧𝐛𝐥𝐨𝐜𝐤
  ┃ ✰ 𝐥𝐢𝐬𝐭𝐛𝐥𝐨𝐜𝐤
+ ┃ ✰ 𝐚𝐝𝐝𝐩𝐫𝐞𝐦
+ ┃ ✰ 𝐝𝐞𝐥𝐩𝐫𝐞𝐦
+ ┃ ✰ 𝐚𝐝𝐝𝐨𝐰𝐧𝐞𝐫
+ ┃ ✰ 𝐝𝐞𝐥𝐨𝐰𝐧𝐞𝐫
  ┗━━━━━━━━━━━━━━━━━◈
 > 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
@@ -624,7 +632,7 @@ let nesy = `
  ┃ ✰ 𝐢𝐠
  ┃ ✰ 𝐠𝐢𝐭𝐜𝐥𝐨𝐧𝐞
  ┗━━━━━━━━━━━━━━━━━◈
-"> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024",
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
 sam.sendMessage(m.chat, { 
 	           text: nesy,
@@ -667,7 +675,7 @@ let kesy = `
  ┃ ✰ 𝐚𝐢
  ┃ ✰ 𝐚𝐥𝐞𝐱𝐚
  ┗━━━━━━━━━━━━━━━━━◈
-"> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024",
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
 sam.sendMessage(m.chat, { 
 	           text: kesy,
@@ -726,6 +734,105 @@ sam.sendMessage(m.chat, {
                     contextInfo: {
                         externalAdReply: {
                             showAdAttribution: true,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+case 'gc-menu':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
+let rtt = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ 𝐤𝐢𝐜𝐤
+ ┃ ✰ 𝐚𝐝𝐝
+ ┃ ✰ 𝐫𝐞𝐯𝐨𝐤𝐞
+ ┃ ✰ 𝐡𝐢𝐝𝐞𝐭𝐚𝐠
+ ┃ ✰ 𝐭𝐚𝐠𝐚𝐥𝐥
+ ┃ ✰ 𝐞𝐝𝐢𝐭𝐢𝐧𝐟𝐨
+ ┃ ✰ 𝐝𝐞𝐦𝐨𝐭𝐞
+ ┃ ✰ 𝐩𝐫𝐨𝐦𝐨𝐭𝐞
+ ┃ ✰ 𝐬𝐞𝐭𝐧𝐚𝐦𝐞
+ ┃ ✰ 𝐬𝐞𝐭𝐝𝐞𝐬𝐜
+ ┃ ✰ 𝐜𝐥𝐨𝐬𝐞𝐠𝐜
+ ┃ ✰ 𝐨𝐩𝐞𝐧𝐠𝐜
+ ┃ ✰ 𝐬𝐞𝐭𝐩𝐩𝐠𝐜
+ ┃ ✰ 𝐢𝐧𝐯𝐢𝐭𝐞
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: rtt,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: false,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+case 'ownermenu':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
+let lesy = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ 𝐬𝐭𝐞𝐚𝐥
+ ┃ ✰ 𝐬𝐨𝐮𝐧𝐝1-160
+ ┃ ✰ 𝐞𝐦𝐨𝐣𝐢𝐦𝐢𝐱
+ ┃ ✰ 𝐭𝐨𝐮𝐫𝐥
+ ┃ ✰ 𝐯𝐯
+ ┃ ✰ 𝐟𝐥𝐢𝐩𝐭𝐞𝐱𝐭
+ ┃ ✰ 𝐭𝐨𝐮𝐫𝐥
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: lesy,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: false,
                             title: `𝐉𝐈𝐍𝐗`,
                             body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
                             thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
@@ -862,12 +969,451 @@ reply("Enter the number you want to unblock")
 }
 break
 case 'listblock':{
-let block = await tdx.fetchBlocklist()
+let block = await sam.fetchBlocklist()
 reply('✫ 𝐉𝐈𝐍𝐗 𝐁𝐋𝐎𝐂𝐊𝐄𝐃 𝐂𝐎𝐍𝐓𝐀𝐂𝐓𝐒 ⦾ :\n\n' + `➤𝐓𝐨𝐭𝐚𝐥 : ${block == undefined ? '➵ 𝐁𝐥𝐨𝐜𝐤𝐞𝐝' : '*' + block.length + '* 𝐅𝐮𝐜𝐤 𝐘𝐨𝐮 𝐁𝐥𝐨𝐜𝐤𝐞𝐝 𝐂𝐨𝐧𝐭𝐚𝐜𝐭𝐬'}\n` + block.map(v => '• ' + v.replace(/@.+/, '')).join`\n`)
 }
 break
 //========================================//
- 
+// Group //
+case 'closegc':
+                if (!m.isGroup) return replygcxeon(`Use Jinx on gc`)
+                if (!isAdmins && !isDeveloper) return reply(`Only admins can use this cmd`)
+                if (!isBotAdmins) return reply(`Jinx at Work`)
+                if (args[1] == 'Second') {
+                    var timer = args[0] * `1000`
+                } else if (args[1] == 'Minutes') {
+                    var timer = args[0] * `60000`
+                } else if (args[1] == 'Hours') {
+                    var timer = args[0] * `3600000`
+                } else if (args[1] == 'Days') {
+                    var timer = args[0] * `86400000`
+                } else {
+                    return reply('*Choose:*\nsecond\nminute\nhour\nday\n\n*Example*\n10 second')
+                }
+                reply(`Close time ${q} starting from now`)
+                setTimeout(() => {
+                    var nomor = m.participant
+                    const close = `*Closed* group closed by admin\nnow only admin can send messages`
+                    sam.groupSettingUpdate(m.chat, 'announcement')
+                    reply(close)
+                }, timer)
+                break
+case 'opengc':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isCreator) return replygcxeon(mess.admin)
+                if (!isBotAdmins) return replygcxeon(mess.botAdmin)
+                if (args[1] == 'second') {
+                    var timer = args[0] * `1000`
+                } else if (args[1] == 'minute') {
+                    var timer = args[0] * `60000`
+                } else if (args[1] == 'hour') {
+                    var timer = args[0] * `3600000`
+                } else if (args[1] == 'day') {
+                    var timer = args[0] * `86400000`
+                } else {
+                    return reply('*Choose:*\nsecond\nminute\nhour\nday\n\n*Example*\n10 second')
+                }
+                reply(`Open time ${q} starting from now`)
+                setTimeout(() => {
+                    var nomor = m.participant
+                    const open = `*Opened* The group is opened by admin\nNow members can send messages`
+                    sam.groupSettingUpdate(m.chat, 'not_announcement')
+                    reply(open)
+                }, timer)
+                break
+case 'add':
+                if (!m.isGroup) return replygcxeon(mess.group)
+                if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                let blockwwww = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                await sam.groupParticipantsUpdate(m.chat, [blockwwww], 'add').then((res) => replygcxeon(json(res))).catch((err) => reply(json(err)))
+                break
+
+case 'promote':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
+                if (!isBotAdmins) return replygcxeon(mess.botAdmin)
+                let blockwwwww = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                await sam.groupParticipantsUpdate(m.chat, [blockwwwww], 'promote').then((res) => replygcxeon(json(res))).catch((err) => reply(json(err)))
+                break
+case 'demote':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                let blockwwwwwa = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+                await sam.groupParticipantsUpdate(m.chat, [blockwwwwwa], 'demote').then((res) => replygcxeon(json(res))).catch((err) => reply(json(err)))
+                break
+		
+ case 'setname':
+            case 'setsubject':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isCreator) return reply(mess.admin)
+                if (!isBotAdmins) return replymess.botAdmin)
+                if (!text) return 'Text ?'
+                await sam.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(json(err)))
+               break
+case 'setppgc':
+            case 'setppgrup':
+            case 'setppgc':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                if (!quoted) return reply(`Send/Reply Image With Caption ${prefix + command}`)
+                if (!/image/.test(mime)) return reply(`Send/Reply Image With Caption ${prefix + command}`)
+                if (/webp/.test(mime)) return reply(`Send/Reply Image With Caption ${prefix + command}`)
+                var medis = await sam.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
+                if (args[0] == 'full') {
+                    var {
+                        img
+                    } = await generateProfilePicture(medis)
+                    await sam.query({
+                        tag: 'iq',
+                        attrs: {
+                            to: m.chat,
+                            type: 'set',
+                            xmlns: 'w:profile:picture'
+                        },
+                        content: [{
+                            tag: 'picture',
+                            attrs: {
+                                type: 'image'
+                            },
+                            content: img
+                        }]
+                    })
+                    fs.unlinkSync(medis)
+                    reply(mess.done)
+                } else {
+                    var memeg = await sam.updateProfilePicture(m.chat, {
+                        url: medis
+                    })
+                    fs.unlinkSync(medis)
+                    reply(mess.done)
+                }
+                break
+case 'hidetag':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                sam.sendMessage(m.chat, {
+                    text: q ? q : '',
+                    mentions: participants.map(a => a.id)
+                }, {
+                    quoted: m
+                })
+                break
+case 'editinfo':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                if (args[0] === 'open') {
+                    await sam.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`Successfully Opened Group Edit Info ðŸ•Šï¸`)).catch((err) => reply(json(err)))
+                } else if (args[0] === 'close') {
+                    await sam.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Closed Group Edit InfoðŸ•Šï¸`)).catch((err) => reply(json(err)))
+                } else {
+                    reply(`Mode ${command}\n\n\nType ${prefix + command}on/off`)
+                }
+                break
+case 'linkgroup':
+            case 'invite':
+            case 'link':
+            case 'linkgc':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                let response = await sam.groupInviteCode(m.chat)
+                sam.sendText(m.chat, `ðŸ‘¥ *GROUP LINK INFO*\nðŸ“› *Name :* ${groupMetadata.subject}\n *Group Owner :* ${groupMetadata.owner !== undefined ? '@' + groupMetadata.owner.split`@`[0] : 'Not known'}\nðŸŒ± *ID :* ${groupMetadata.id}\n *Chat Link :* https://chat.whatsapp.com/${response}\n *Member :* ${groupMetadata.participants.length}\n`, m, {
+                    detectLink: true
+                })
+                break
+case 'revoke':
+            case 'resetlink':
+                if (!m.isGroup) return reply(mess.group)
+                if (!isAdmins && !isGroupOwner && !isDeveloper) return reply(mess.admin)
+                if (!isBotAdmins) return reply(mess.botAdmin)
+                await sam.groupRevokeInvite(m.chat)
+                    .then(res => {
+                        reply(`Successful Reset, Group Invite Link ${groupMetadata.subject}`)
+                    }).catch((err) => reply(json(err)))
+                break
+//=========================================================//
+//Other,//
+		case 'swm': case 'steal': case 'stickerwm': case 'take': {
+                if (!args.join(" ")) return reply(`Where is the text?`)
+                const swn = args.join(" ")
+                const pcknm = swn.split("|")[0]
+                const atnm = swn.split("|")[1]
+                if (m.quoted.isAnimated === true) {
+                    sam.downloadAndSaveMediaMessage(quoted, "gifee")
+                    sam.sendMessage(from, { sticker: fs.readFileSync("gifee.webp") }, { quoted: m })
+                } else if (/image/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await sam.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 Seconds!')
+                    let media = await quoted.download()
+                    let encmedia = await sam.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+                } else {
+                    reply(`Photo/Video?`)
+                }
+            }
+                break
+case 'tourl': {
+                reply(mess.wait)
+                let media = await sam.downloadAndSaveMediaMessage(qmsg)
+                if (/image/.test(mime)) {
+                    let anu = await TelegraPh(media)
+                    reply(util.format(anu))
+                } else if (!/image/.test(mime)) {
+                    let anu = await UploadFileUgu(media)
+                    reply(util.format(anu))
+                }
+                await fs.unlinkSync(media)
+
+            }
+                break
+case 'emojimix': {
+                let [emoji1, emoji2] = text.split`+`
+                if (!emoji1) return reply(`Example : ${prefix + command} ”`)
+                if (!emoji2) return reply(`Example : ${prefix + command} ð”`)
+                reply(mess.wait)
+                let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
+                for (let res of anu.results) {
+                    let encmedia = await sam.sendImageAsSticker(m.chat, res.url, m, {
+                        packname: global.packname,
+                        author: global.author,
+                        categories: res.tags
+                    })
+                    await fs.unlinkSync(encmedia)
+                }
+            }
+                break
+
+                break
+            case 'vv':
+            case 'toviewonce': {
+                if (!quoted) return reply(`Reply Image/Video`)
+                if (/image/.test(mime)) {
+                    anuan = await sam.downloadAndSaveMediaMessage(quoted)
+                    sam.sendMessage(m.chat, {
+                        image: {
+                            url: anuan
+                        },
+                        caption: `Here you go!`,
+                        fileLength: "999",
+                        viewOnce: true
+                    }, {
+                        quoted: m
+                    })
+                } else if (/video/.test(mime)) {
+                    anuanuan = await sam.downloadAndSaveMediaMessage(quoted)
+                    sam.sendMessage(m.chat, {
+                        video: {
+                            url: anuanuan
+                        },
+                        caption: `By Jinx!`,
+                        fileLength: "99999999",
+                        viewOnce: true
+                    }, {
+                        quoted: m
+                    })
+                }
+            }
+	 break
+case 'fliptext': {
+                if (args.length < 1) return reply(`Example:\n${prefix}fliptext King Sam`)
+                quere = args.join(" ")
+                flipe = quere.split('').reverse().join('')
+                reply(`\`\`\`ã€Œ FLIP TEXT \`\`\`\n Normal :*\n${quere}\n Flip :*\n${flipe}`)
+            }
+                break
+case 'addowner':
+                if (!isDeveloper) return reply(mess.owner)
+                if (!args[0]) return reply(`Use ${prefix + command} number\nExample ${prefix + command} ${ownernumber}`)
+                bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
+                let ceknye = await sam.onWhatsApp(bnnd)
+                if (ceknye.length == 0) return reply(`Enter A Valid And Registered Number On WhatsApp!!!`)
+                owner.push(bnnd)
+                fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+                reply(`Number ${bnnd} Has Become An Owner!!!`)
+                break
+            case 'delowner':
+                if (!isDeveloper) return reply(mess.owner)
+                if (!args[0]) return reply(`Use ${prefix + command} nomor\nExample ${prefix + command} 2348140825959`)
+                ya = q.split("|")[0].replace(/[^0-9]/g, '')
+                unp = owner.indexOf(ya)
+                owner.splice(unp, 1)
+                fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+                reply(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
+                break
+//==========================================//
+//Sound Menu//
+case 'sound1':
+            case 'sound2':
+            case 'sound3':
+            case 'sound4':
+            case 'sound5':
+            case 'sound6':
+            case 'sound7':
+            case 'sound8':
+            case 'sound9':
+            case 'sound10':
+            case 'sound11':
+            case 'sound12':
+            case 'sound13':
+            case 'sound14':
+            case 'sound15':
+            case 'sound16':
+            case 'sound17':
+            case 'sound18':
+            case 'sound19':
+            case 'sound20':
+            case 'sound21':
+            case 'sound22':
+            case 'sound23':
+            case 'sound24':
+            case 'sound25':
+            case 'sound26':
+            case 'sound27':
+            case 'sound28':
+            case 'sound29':
+            case 'sound30':
+            case 'sound31':
+            case 'sound32':
+            case 'sound33':
+            case 'sound34':
+            case 'sound35':
+            case 'sound36':
+            case 'sound37':
+            case 'sound38':
+            case 'sound39':
+            case 'sound40':
+            case 'sound41':
+            case 'sound42':
+            case 'sound43':
+            case 'sound44':
+            case 'sound45':
+            case 'sound46':
+            case 'sound47':
+            case 'sound48':
+            case 'sound49':
+            case 'sound50':
+            case 'sound51':
+            case 'sound52':
+            case 'sound53':
+            case 'sound54':
+            case 'sound55':
+            case 'sound56':
+            case 'sound57':
+            case 'sound58':
+            case 'sound59':
+            case 'sound60':
+            case 'sound61':
+            case 'sound62':
+            case 'sound63':
+            case 'sound64':
+            case 'sound65':
+            case 'sound66':
+            case 'sound67':
+            case 'sound68':
+            case 'sound69':
+            case 'sound70':
+            case 'sound71':
+            case 'sound72':
+            case 'sound73':
+            case 'sound74':
+            case 'sound75':
+            case 'sound76':
+            case 'sound77':
+            case 'sound78':
+            case 'sound79':
+            case 'sound80':
+            case 'sound81':
+            case 'sound82':
+            case 'sound83':
+            case 'sound84':
+            case 'sound85':
+            case 'sound86':
+            case 'sound87':
+            case 'sound88':
+            case 'sound89':
+            case 'sound90':
+            case 'sound91':
+            case 'sound92':
+            case 'sound93':
+            case 'sound94':
+            case 'sound95':
+            case 'sound96':
+            case 'sound97':
+            case 'sound98':
+            case 'sound99':
+            case 'sound100':
+            case 'sound101':
+            case 'sound102':
+            case 'sound103':
+            case 'sound104':
+            case 'sound105':
+            case 'sound106':
+            case 'sound107':
+            case 'sound108':
+            case 'sound109':
+            case 'sound110':
+            case 'sound111':
+            case 'sound112':
+            case 'sound113':
+            case 'sound114':
+            case 'sound115':
+            case 'sound116':
+            case 'sound117':
+            case 'sound118':
+            case 'sound119':
+            case 'sound120':
+            case 'sound121':
+            case 'sound122':
+            case 'sound123':
+            case 'sound124':
+            case 'sound125':
+            case 'sound126':
+            case 'sound127':
+            case 'sound128':
+            case 'sound129':
+            case 'sound130':
+            case 'sound131':
+            case 'sound132':
+            case 'sound133':
+            case 'sound134':
+            case 'sound135':
+            case 'sound136':
+            case 'sound137':
+            case 'sound138':
+            case 'sound139':
+            case 'sound140':
+            case 'sound141':
+            case 'sound142':
+            case 'sound143':
+            case 'sound144':
+            case 'sound145':
+            case 'sound146':
+            case 'sound147':
+            case 'sound148':
+            case 'sound149':
+            case 'sound150':
+            case 'sound151':
+            case 'sound152':
+            case 'sound153':
+            case 'sound154':
+            case 'sound155':
+            case 'sound156':
+            case 'sound157':
+            case 'sound158':
+            case 'sound159':
+            case 'sound160':
+            case 'sound161':
+                sam_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
+                await sam.sendMessage(m.chat, { audio: sam_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
+                break
+		
+
 default:
 }
 }
