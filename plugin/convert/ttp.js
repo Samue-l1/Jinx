@@ -42,6 +42,6 @@ module.exports = {
         await reaction(m.chat, "🪄");
         await sleep(1500);
         await tdx.sendImageAsSticker(m.chat, fs.readFileSync(outputFile), m, { packname: global.packname, author: global.author });
-        await reaction(m.chat, "🦄");*/
+        await reaction(m.chat, "🦄");
     }
 };
