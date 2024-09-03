@@ -160,6 +160,7 @@ const itsOrkay = JSON.parse(fs.readFileSync(path.resolve(__dirname, './premium.j
 const kontributor = JSON.parse(fs.readFileSync(path.resolve(__dirname, './owner.json'), 'utf8'))
 const isDeveloper = [ botNumber, ...kontributor, ...global.ownMain ].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
 const isPremium = [ botNumber, ...kontributor, ...itsOrkay, ...global.ownMain ].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
+const isBan = banned.includes(m.sender)
 //=================================================//
 //Group
 const groupMetadata = m.isGroup ? await sam.groupMetadata(m.chat).catch(e => {}) : ''
@@ -1548,7 +1549,6 @@ case 'summersand':
 case 'horrorblood':
 case 'thunder':
 if (args.length == 0) return reply(`Example: ${prefix + command} JINX V1`)
-await loading()
 sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=${apikey}&text=${command}` } })
 break
 //=================================================//
