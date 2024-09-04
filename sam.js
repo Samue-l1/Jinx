@@ -1560,18 +1560,6 @@ case 'thunder':
 	sam.sendMessage(from, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command}?apikey=cde5404984da80591a2692b6&text=${text}` } })
 	break; 
 //=================================================//
-case 'cry': case 'kill': case 'hug': case 'pat': case 'lick': 
-case 'kiss': case 'bite': case 'yeet': case 'bully': case 'bonk':
-case 'wink': case 'poke': case 'nom': case 'slap': case 'smile': 
-case 'wave': case 'awoo': case 'blush': case 'wank': case 'glomp': 
-case 'happy': case 'dance': case 'cringe': case 'cuddle': case 'highfive': 
-case 'shinobu': case 'handhold': {
-axios.get(`https://api.waifu.pics/sfw/${command}`)
-.then(({data}) => {
-sam.sendImageAsSticker(m.chat, data.url, m, { packname: packname, author: author })
-})
-}
-break;
  //===============================================//
 default:
 }
