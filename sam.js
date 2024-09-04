@@ -1282,6 +1282,24 @@ case 'emojimix': {
                 }
             }
                 break
+	case 'welcome': {
+if (/on/.test(text)) {
+ if (global.welcome) {
+   m.reply("Already activated");
+ } else {
+ global.welcome = true;
+m.reply("Activated welcome message");
+}
+} else if (/off/.test(text)) {
+if (!global.welcome) {
+   m.reply("Already deactivated");
+ } else {
+ global.welcome = false;
+m.reply("Deactivated welcome message");
+}
+} else m.reply(`Type ${prefix+command} on|off`);
+}
+break;  
 case 'vv':
             case 'toviewonce': {
                 if (!quoted) return reply(`Reply Image/Video`)
