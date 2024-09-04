@@ -101,6 +101,10 @@ const bochil = require("@bochilteam/scraper")
 const fakeUA = require("fake-useragent")
 const randomUA = fakeUA().toString()
 const fs = require("fs")
+const fonts = require('./lib/fonts.js');
+const menufont = require('./lib/menufonts.js');
+const availableStyles = Object.keys(fonts);
+const availableFontStyles = Object.keys(menufont);
 module.exports = sam = handler = async (sam, m, chatUpdate, store) => {
 try {
 //=================================================//
