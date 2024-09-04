@@ -1690,7 +1690,7 @@ if (/metalliceffect/.test(command)) link = 'https://photooxy.com/logo-and-text-e
 if (/embroiderytext/.test(command)) link = 'https://photooxy.com/logo-and-text-effects/create-embroidery-text-online-191.html'
 if (/flamingtext/.test(command)) link = 'https://photooxy.com/logo-and-text-effects/realistic-flaming-text-effect-online-197.html'
 let dehe = await photooxy.photoOxy(link, q)
-sam.sendMessage(m.chat, { image: { url: dehe }, caption: `${isdone}` }, { quoted: m })
+sam.sendMessage(m.chat, { image: { url: dehe }, caption: `By JINX V1` }, { quoted: m })
 }
 break;
 //=======================================================//
