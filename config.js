@@ -16,6 +16,7 @@ global.namabot = '𝐉𝐢𝐧𝐱-𝐕1' //ganti aj klo mau
 global.author = '𝕶𝖎𝖓𝖌 𝕾𝖆𝖒' //ganti aj klo mau
 global.packname = '𝐉𝐢𝐧𝐱-𝐕1' //ganti aj klo mau
 global.autoviewstatus = process.env.autoviewstatus || "TRUE"
+global.welcome = false
 global.url1 = 'https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e' //gausah diganti
 global.url2 = 'https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e' //gausah diganti
 global.linkgc = 'https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e'
