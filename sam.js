@@ -1129,7 +1129,7 @@ reply('done')
 await reaction(m.chat, "🦄")}
 break
 //=================================================//
-case 'editsubjek': {
+case 'editsubject': {
 if (!isGroup) return reply(mess.ingroup)
 if (!isBotAdmins) return reply(mess.notadmin)
 if (!q) return reply(`Example *${prefix + command} new*`);
@@ -1226,6 +1226,190 @@ sam.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.
  await reaction(m.chat, "🦄")}
 break
 //=================================================//
+case 'listpc': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+                 let teks = `🦄 *LIST OF PERSONAL CHATS*\n\nTotal Chat : ${anu.length} Chats\n\n`
+                 for (let i of anu) {
+                     let nama = store.messages[i].array[0].pushName
+                     teks += `🚫 *Name :* ${nama}\n🫥 *User :* @${i.split('@')[0]}\n🦄 *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                 }
+                 sam.sendTextWithMentions(m.chat, teks, m)
+             }
+             break;
+
+case 'listgc': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+                let teks = `⬣ *LIST OF GROUP CHATS*\n\nTotal Group : ${anu.length} Group\n\n`
+                 for (let i of anu) {
+                     let metadata = await sam.groupMetadata(i)
+                     teks += `🦄 *Name :* ${metadata.subject}\n🦄 *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n🫥 *Created on :* ${moment(metadata.creation * 1000).tz('Africa/Nairobi').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Members :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                 }
+                 sam.sendTextWithMentions(m.chat, teks, m)
+             }
+             break;
+case 'listonline': case 'liston': {
+                    let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
+                    let online = [...Object.keys(store.presences[id]), botNumber]
+                    sam.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+             }
+             break;
+case 'true':
+case 'truecaller':
+  try {
+    if (!text) {
+      // Reply when no phone number is provided
+    return  reply ('Please provide a phone number.');
+      break;
+    }
+
+    const installationId = 'a1i0g--k3toNiVP-9swCenahQhhokTiqfXRFw2LossLOsZLDh3P-fLD0b75S8iF7';
+    const apiUrl = `https://sid-bhai.vercel.app/api/truecaller?phone=${encodeURIComponent(text)}&id=${installationId}`;
+
+    let response = await axios.get(apiUrl);
+    console.log(response);
+    let json = response.data;
+
+    const { name, alternateName, addresses, email, countryDetails } = json;
+
+    let info = `╭––『 *Phone Detail* 』\n`;
+    info += `┆ ⚝ *Name:* ${name}\n`;
+
+    if (addresses && addresses.length > 0) {
+      info += `┆ ⚝ *Address:* ${addresses[0].city}, ${addresses[0].countryCode}\n`;
+      info += `┆ ⚝ *Time Zone:* ${addresses[0].timeZone}\n`;
+      info += `┆ ⚝ *Pin Code* ${addresses[0].zipCode}\n`;
+      info += `┆ ⚝ *Street* ${addresses[0].street}\n`;
+    }
+
+    info += `┆ ⚝ *Email:* ${email}\n`;
+    info += `╰–––––––––––––––༓\n`;
+
+    if (countryDetails) {
+      info += `╭––『 *countryDetails* 』\n`;
+      info += `┆ ⚝ *Name:* ${countryDetails.name}\n`;
+      info += `┆ ⚝ *Native:* ${countryDetails.native}\n`;
+      info += `┆ ⚝ *Phone Code:* +${countryDetails.phone[0]}\n`;
+      info += `┆ ⚝ *Continent:* ${countryDetails.continent}\n`;
+      info += `┆ ⚝ *Capital:* ${countryDetails.capital}\n`;
+      info += `┆ ⚝ *Currency:* ${countryDetails.currency.join(', ')}\n`;
+      info += `┆ ⚝ *Languages:* ${countryDetails.languages.join(', ')}\n`;
+      info += `┆ ⚝ *Flag:* ${countryDetails.flag}\n`;
+      info += `╰–––––––––––––––༓
+                *By Jinx V1* `;
+    }
+
+    await sam.sendMessage(m.chat, {
+      text: info,
+    }, {
+      quoted: m,
+    });
+
+  } catch (error) {
+    console.error(error);
+  }
+  break;
+case 'subfinder': {
+ /*if (!Owner) return reply('Mohon maaf, hanya pembuat yang dapat menggunakan perintah ini.')*/
+  if (!q) return reply('Name of the domain ? .')
+  await loading()
+  let feta = await fetchJson(`https://api.caliph.biz.id/api/scan/subdomain?host=${q}&apikey=fZ69bJCk`);
+  if (!feta.status) return reply('Please wait') 
+  
+  let list = '*List Subdomain*\n\n'
+  for (let L of feta.result) {
+    list += `Name: ${L.domain}\nDNS: ${L.dns}\nProxy: ${L.cf_proxy ? "✅" : "❌"}\n\n`
+  }
+  
+  sam.sendMessage(from, { text: list.trim() }, { quoted: m })
+  } 
+  break;
+
+case 'tempmail': case 'mail': {
+  const maxEmails = 10;
+  const count = Math.min(parseInt(args[0]) || 1, maxEmails); // Parse the provided argument as a number, default to 1
+  const baseUrl = `https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=${count}`;
+  const timeout = 10000; // 10 seconds timeout for Axios requests
+
+  try {
+    const response = await axios.get(baseUrl);
+    const data = response.data;
+
+    if (data && data.length > 0) {
+      const tempMails = data.join('\n');
+      const replyMessage = `*Temporary Email Address:*\n\n${tempMails}`;
+      reply(replyMessage);
+    } else {
+      reply(`Failed to generate ${count} temporary email address(es).`);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    reply('Failed to fetch temporary email addresses.');
+  }
+  break;
+case 'checkmail': {
+  if (!text) {
+    reply('Please provide an email address to read the most recent message.');
+    break;
+  }
+
+  // Split the provided email address into login and domain
+  const [login, domain] = text.split('@');
+
+  // Check if the email address was split correctly
+  if (!login || !domain) {
+    reply('Invalid email address format.');
+    break;
+  }
+
+  const baseUrl = 'https://www.1secmail.com/api/v1/?action=getMessages';
+
+  // Use the extracted login and domain values
+  const url = `${baseUrl}&login=${login}&domain=${domain}`;
+
+  const timeout = 10000; // 10 seconds timeout for Axios requests
+
+  try {
+    const response = await axios.get(url, { timeout });
+    const data = response.data;
+
+    if (data && data.length > 0) {
+      // Extract the latest message ID
+      const latestMessageId = data[0].id;
+
+      // Use the latest message ID to read the message
+      const readUrl = `https://www.1secmail.com/api/v1/?action=readMessage&login=${login}&domain=${domain}&id=${latestMessageId}`;
+
+      const readResponse = await axios.get(readUrl, { timeout });
+      const messageData = readResponse.data;
+
+      if (messageData && messageData.textBody) {
+        const sender = messageData.from;
+        const date = messageData.date;
+        const subject = messageData.subject || 'No Subject';
+
+        const replyMessage = `*Message in* ${text}:\n\n*From:* ${sender}\n*Subject:* ${subject}\n*Date:* ${date}\n\n*Messages:*\n\n${messageData.textBody}`;
+        reply(replyMessage, m.from, { caption: replyMessage });
+
+      } else {
+        reply(`No message found in ${text}.`);
+      }
+    } else {
+      reply(`No messages found in ${text}.`);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    reply(`Failed to read the most recent message in ${text}.`);
+  }
+  break;
+case'voiceai' : {
+if (!Developer) return reply(`You are not my owner`)
+if (!q) return reply('Your request?')
+getBuffer("https://api.yanzbotz.my.id/api/ai/gptvoice?query=" + q ).then( a => {
+sam.sendMessage(from, { audio: a, mimetype: 'audio/mp4', ptt: true}, {quoted:m})        
+})
+}
+break;
+//===============================================°=//
 case 'tourl': {
                 reply(mess.wait)
                 let media = await sam.downloadAndSaveMediaMessage(qmsg)
