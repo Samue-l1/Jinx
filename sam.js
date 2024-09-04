@@ -138,7 +138,6 @@ const { remini } = require("./lib/remini")
 const { toPTT, toAudio } = require("./lib/converter")
 const { UploadFileUgu, webp2mp4File, floNime, TelegraPh } = require("./lib/uploader")
 const { toTelegra } = require("./lib/upload")
-const photooxy = require('./lib/photooxy')
 //=================================================//
 const { groupMembers } = m
 var budy = (typeof m.text == "string" ? m.text : "")
