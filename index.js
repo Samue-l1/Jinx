@@ -331,7 +331,26 @@ async function samStart() {
         });
         return status;
     };
-    
+    sam.ev.on("messages.upsert", async (chatUpdate) => {
+    //console.log(JSON.stringify(chatUpdate, undefined, 2))
+    try {
+    mek = chatUpdate.messages[0];
+      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+
+         classic.readMessages([mek.key]);
+
+}
+      mek = chatUpdate.messages[0];
+      if (!mek.message) return;
+      mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
+      if (mek.key && mek.key.remoteJid === "status@broadcast") return;
+      if (!sam.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
+      if (mek.key.id.startsWith("BAE5") && mek.key.id.length === 16) return;
+      m = smsg(sam, mek, store);
+    } catch (err) {
+      console.log(err);
+    }
+  })
     sam.getName = (jid, withoutContact = false) => {
         let id = sam.decodeJid(jid);
         withoutContact = sam.withoutContact || withoutContact;
