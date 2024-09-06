@@ -93,7 +93,7 @@ const path = require("path")
 const cheerio = require("cheerio")
 const ytdl = require("ytdl-core")
 const chalk = require("chalk")
-const { color } = require("./lib/color")
+const { color } = require("../lib/color")
 const FormData = require("form-data")
 const crypto = require("crypto")
 const yts = require("yt-search")
@@ -101,8 +101,8 @@ const bochil = require("@bochilteam/scraper")
 const fakeUA = require("fake-useragent")
 const randomUA = fakeUA().toString()
 const fs = require("fs")
-const fonts = require('./lib/fonts.js');
-const menufont = require('./lib/menufonts.js');
+const fonts = require('../lib/fonts.js');
+const menufont = require('../lib/menufonts.js');
 const availableStyles = Object.keys(fonts);
 const availableFontStyles = Object.keys(menufont);
 module.exports = sam = handler = async (sam, m, chatUpdate, store) => {
@@ -110,7 +110,7 @@ try {
 //=================================================//
 var body = m.mtype === "conversation" ? m.message.conversation : m.mtype === "imageMessage" ? m.message.imageMessage.caption : m.mtype === "videoMessage" ? m.message.videoMessage.caption : m.mtype === "extendedTextMessage" ? m.message.extendedTextMessage.text : m.mtype === "buttonsResponseMessage" ? m.message.buttonsResponseMessage.selectedButtonId : m.mtype === "listResponseMessage" ? m.message.listResponseMessage.singleSelectReply.selectedRowId : m.mtype === "interactiveResponseMessage" ? JSON.parse(m.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id : m.mtype === "templateButtonReplyMessage" ? m.message.templateButtonReplyMessage.selectedId : m.mtype === "messageContextInfo" ? m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.message.interactiveResponseMessage?.nativeFlowResponseMessage || m.text : ""
 //=================================================//
-require("./derived/config")
+require("../derived/config")
 const {
 smsg,
 getGroupAdmins,
@@ -137,12 +137,12 @@ generateProfilePicture,
 parseMention,
 getRandom,
 pickRandom
-} = require("./lib/myfunction")
-const { remini } = require("./lib/remini")
-const { toPTT, toAudio } = require("./lib/converter")
+} = require("../lib/myfunction")
+const { remini } = require("../lib/remini")
+const { toPTT, toAudio } = require("../lib/converter")
 const { UploadFileUgu, webp2mp4File, floNime, TelegraPh } = require("./lib/uploader")
-const { toTelegra } = require("./lib/upload")
-const photooxy = require('./lib/photooxy')
+const { toTelegra } = require("../lib/upload")
+const photooxy = require('../lib/photooxy')
 //=================================================//
 const { groupMembers } = m
 var budy = (typeof m.text == "string" ? m.text : "")
@@ -179,10 +179,10 @@ const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).include
 const isNsfw = m.isGroup ? nsfw.includes(from) : false;
  const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false;
 //=================================================//
-const samido = fs.readFileSync(path.resolve(__dirname, './derived/menu.mp3'))
-const jinx = fs.readFileSync(path.resolve(__dirname, './derived/jinx.jpg'))
-let antilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
-const nsfw = JSON.parse(fs.readFileSync('./derived/nsfw.json'))
+const samido = fs.readFileSync(path.resolve(__dirname, '../derived/menu.mp3'))
+const jinx = fs.readFileSync(path.resolve(__dirname, '../derived/jinx.jpg'))
+let antilinkall =JSON.parse(fs.readFileSync('../derived/antilinkall.json'));
+const nsfw = JSON.parse(fs.readFileSync('../derived/nsfw.json'))
 const advice = require("badadvice");
 //=================================================//
 const from = m.chat;
