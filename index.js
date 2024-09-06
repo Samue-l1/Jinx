@@ -4,7 +4,7 @@
 
 
 */
-require('./config');
+require('./derived/config');
 const {
     default: samConnect,
     makeWASocket,
@@ -155,12 +155,12 @@ async function samStart() {
     //}
     //const sam = makeWASocket(connectionOptions);
     if (usePairingCode && !sam.authState.creds.registered) {
-        say("SPIDER-V7\n", {
+        say("JINX-V1\n", {
             font: 'block',
             align: 'center',
             gradient: [randomcolor, randomcolor]
         });
-        say("Create By 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒\n𝐒𝐏𝐈𝐃𝐄𝐑 𝐕7\n𝐓𝐇𝐄 𝐇𝐎𝐋𝐘 𝐆𝐇𝐎𝐒𝐓\n𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐍𝐈𝐆𝐇𝐓𝐌𝐀𝐑𝐄\n", {
+        say("Create By 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒\nJinx V1\n𝐓𝐇𝐄 𝐇𝐎𝐋𝐘 𝐆𝐇𝐎𝐒𝐓\n𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐍𝐈𝐆𝐇𝐓𝐌𝐀𝐑𝐄\n", {
             font: 'console',
             align: 'center',
             gradient: [randomcolor, randomcolor]
@@ -169,7 +169,7 @@ async function samStart() {
         let togel = phoneNumber.replace(/[^0-9]/g, '')
         await console.clear()
         let pairCode = await sam.requestPairingCode(togel.trim());
-        console.log(color(`[ # ] enter that code into WhatsApp, motherfucker : ${pairCode}`, randomcolor));
+        console.log(color(`[ # ] enter that code into WhatsApp: ${pairCode}`, randomcolor));
     };
     
     setInterval(async () => {
