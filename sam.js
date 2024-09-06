@@ -176,9 +176,9 @@ const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isGroup = m.chat.endsWith('@g.us')
 const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
-const isNsfw = m.isGroup ? nsfw.includes(from) : false;
+const isNsfw = m.isGroup ? nsfw.includes(from) : true;
 const NotNsfw = process.env.NSFWMSG || 'Nsfw is not activated here';
-const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false;
+const AntiLinkAll = m.isGroup ? antilinkall.includes(from) : false;
 //=================================================//
 const samido = fs.readFileSync(path.resolve(__dirname, './derived/menu.mp3'))
 const jinx = fs.readFileSync(path.resolve(__dirname, './derived/jinx.jpg'))
@@ -1954,7 +1954,6 @@ case 'weather':
 
         break;
 case 'nsfwmenu':
-        if (!isNsfw) return reply(NotNsfw);
         if (!m.isGroup) return reply(group);
 
         const nsfwmenu=`┌──⊰ _*🔞NSFW 🔞*_
@@ -1982,7 +1981,6 @@ case 'nsfwmenu':
    sam.sendMessage(m.chat, { image: { url: "./derived/jinx.jpg" }, caption: nsfwmenu }, { quoted: m });
         break;
 case "xnxxdl": {
-if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
 //if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply ('Group command')
         if (!text) return reply(`Enter Url`)
@@ -1999,7 +1997,6 @@ sam.sendMessage(m.chat, { caption: `≡  *XNXX DL BY JINX*
 }
 break;
 case 'xnxxsearch': {
-if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
 //if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply('Group command')
         if (!text) return reply(`Enter Query`)
@@ -2046,8 +2043,7 @@ case 'hentai':
 case 'ass':
 case 'breast':
 case 'blowjob':
-    if (!m.isGroup) return reply(group);
-    if (!isNsfw) return reply(NotNsfw);
+    if (!m.isGroup) return reply(`Wait for magic 🪄`);
     const waifpoudd = await axios.get(`https://fantox-apis.vercel.app/${command}`);
     sam.sendMessage(m.chat, { caption: 'OMG🥵', image: { url: waifpoudd.data.url } }, { quoted: m });
     break;
@@ -2058,7 +2054,6 @@ case 'blowjob':
               break;
 
 case 'maal': {
-  if (!isNsfw) return reply(NotNsfw);
   if (!m.isGroup) return reply(group);
   reply('Please wait..');
   await sam.sendMessage(m.chat, {
