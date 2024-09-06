@@ -43,6 +43,8 @@
         "node-gtts": "^2.0.2",
         "node-webpmux": "^3.1.0",
         "path": "^0.12.7",
+        "heroku-client": "3.1.0",
+        "simple-git": "^3.16.1",
         "performance-now": "^2.1.0",
         "pino": "^7.0.5",
         "qrcode": "^1.5.3",
