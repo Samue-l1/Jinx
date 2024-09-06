@@ -794,7 +794,7 @@ async function samStart() {
             if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return;
             if (mek.key.id.startsWith('FatihArridho_')) return;
             let m = smsg(sam, mek, store);
-            require("./sam.js")(sam, m, chatUpdate, store);
+            require("./grab/sam.js")(sam, m, chatUpdate, store);
         } catch (err) {
             console.log(err);
         }
