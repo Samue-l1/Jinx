@@ -110,7 +110,7 @@ try {
 //=================================================//
 var body = m.mtype === "conversation" ? m.message.conversation : m.mtype === "imageMessage" ? m.message.imageMessage.caption : m.mtype === "videoMessage" ? m.message.videoMessage.caption : m.mtype === "extendedTextMessage" ? m.message.extendedTextMessage.text : m.mtype === "buttonsResponseMessage" ? m.message.buttonsResponseMessage.selectedButtonId : m.mtype === "listResponseMessage" ? m.message.listResponseMessage.singleSelectReply.selectedRowId : m.mtype === "interactiveResponseMessage" ? JSON.parse(m.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id : m.mtype === "templateButtonReplyMessage" ? m.message.templateButtonReplyMessage.selectedId : m.mtype === "messageContextInfo" ? m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.message.interactiveResponseMessage?.nativeFlowResponseMessage || m.text : ""
 //=================================================//
-require("./config")
+require("./derived/config")
 const {
 smsg,
 getGroupAdmins,
@@ -1494,7 +1494,7 @@ case 'vv':
                 }
             }
                 break
-case 'broadcastig': case 'bcimage': case 'broadcastvideo': case 'broadcastvid':
+case 'broadcast': case 'bcimage': case 'broadcastvideo': case 'broadcastvid':
 if(!Developer) throw NotOwner;
         if (!q) return reply(`Enter text`)
         let getGroups = await sam.groupFetchAllParticipating()
@@ -2036,6 +2036,13 @@ case 'foxgirl':
 case 'headband':
 case 'hatsunemiku':
 case 'ribbons':
+case 'pussy':
+case 'cum':
+case 'gangbang':
+case 'hentai':
+case 'ass':
+case 'breast':
+case 'blowjob':
     if (!m.isGroup) return reply(group);
     if (!isNsfw) return reply(NotNsfw);
     const waifpoudd = await axios.get(`https://fantox-apis.vercel.app/${command}`);
