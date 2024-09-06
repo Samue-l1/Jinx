@@ -263,7 +263,58 @@ async function addExif(webpSticker, packname, author, categories = [''], extra =
     await img.load(webpSticker)
     img.exif = exif
     return await img.save(null)
+
 }
+
+	async function Telesticker(url) {
+    return new Promise(async (resolve, reject) => {
+        if (!url.match(/(https:\/\/t.me\/addstickers\/)/gi)) return reply('Enter your url telegram sticker link')
+        packName = url.replace("https://t.me/addstickers/", "")
+        data = await axios(`https://api.telegram.org/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/getStickerSet?name=${encodeURIComponent(packName)}`, {method: "GET",headers: {"User-Agent": "GoogleBot"}})
+        const mariayresult = []
+        for (let i = 0; i < data.data.result.stickers.length; i++) {
+            fileId = data.data.result.stickers[i].thumb.file_id
+            data2 = await axios(`https://api.telegram.org/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/getFile?file_id=${fileId}`)
+            result = {
+            status: 200,
+            author: '𝕶𝖎𝖓𝖌 𝕾𝖆𝖒',
+            url: "https://api.telegram.org/file/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/" + data2.data.result.file_path
+            }
+            mariayresult.push(result)
+        }
+    resolve(mariayresult)
+    })
+}
+
+try {
+  const textLower = m.text.toLowerCase();
+
+  if (textLower === 'send' || textLower === 'statusdown' || textLower === 'take') {
+    const quotedMessage = m.msg.contextInfo.quotedMessage;
+
+    if (quotedMessage) {
+      // Check if it's an image
+      if (quotedMessage.imageMessage) {
+        let imageCaption = quotedMessage.imageMessage.caption;
+        let imageUrl = await
+client.downloadAndSaveMediaMessage(quotedMessage.imageMessage);
+        client.sendMessage(m.chat, { image: { url: imageUrl }, caption: imageCaption });
+        reply('*Status Download Successful: by Jinx V1*');
+      }
+
+      // Check if it's a video
+      if (quotedMessage.videoMessage) {
+        let videoCaption = quotedMessage.videoMessage.caption;
+        let videoUrl = await client.downloadAndSaveMediaMessage(quotedMessage.videoMessage);
+        client.sendMessage(m.chat, { video: { url: videoUrl }, caption: videoCaption });
+        reply('*Status Download Successful: by Jinx V1*');
+      }
+    }
+  }
+} catch (error) {
+  console.error("Error in 'send message' handling:", error);
+}
+	
 //=================================================//
 const zyd = {
             key: {
@@ -1440,6 +1491,47 @@ case 'vv':
                 }
             }
                 break
+case 'broadcastig': case 'bcimage': case 'broadcastvideo': case 'broadcastvid':
+if(!Developer) throw NotOwner;
+        if (!q) return reply(`Enter text`)
+        let getGroups = await sam.groupFetchAllParticipating()
+        let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+        let xeoncast = groups.map(v => v.id)
+        reply(` Broadcasting in ${xeoncast.length} Group Chat, in ${xeoncast.length * 1.5} seconds`)
+        for (let i of xeoncast) {
+let txt = `${ownername}'s Broadcast\n\nMessage : ${q}`
+if(/image/.test(mime)) {
+let media = await quoted.download()
+await sam.sendMessage(i, { image:media,  caption: txt,mentions:participants.map(a => a.id) })
+}
+if(/video/.test(mime)){
+let media = await quoted.download()
+await sam.sendMessage(i, { video:media,  caption: txt, mentions:participants.map(a => a.id) })
+}
+            }
+        reply(`Successfuly Broadcasted in ${xeoncast.length} Groups`)      
+        break;
+case 'tovv': case 'toviewonce': { 
+if (!quoted) return reply(`Reply Image/Video`)
+if (/image/.test(mime)) {
+anuan = await client.downloadAndSaveMediaMessage(quoted)
+sam.sendMessage(m.chat, {image: {url:anuan}, caption: `Here you go!`, fileLength: "999", viewOnce : true},{quoted: m })
+} else if (/video/.test(mime)) {
+anuanuan = await sam.downloadAndSaveMediaMessage(quoted)
+sam.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, fileLength: "99999999", viewOnce : true},{quoted: m })
+}
+}
+break;
+case 'snapshotfull': case 'ssf':
+  try {
+    if (!text) return reply("```Uhh Please, Give me Url!```");
+    let urll = `https://image.thum.io/get/fullpage/=${text.match(/\bhttps?:\/\/\S+/gi)[0]}`
+    let media = await getBuffer(urll)
+    return await sam.sendMessage(m.chat, { image: media }, { quoted: m });
+  } catch (err) {
+    return reply("```Error While Fetching Snapshot```");
+  }
+  break;
 case 'fliptext': {
                 if (args.length < 1) return reply(`Example:\n${prefix}fliptext Sam`)
                 quere = args.join(" ")
@@ -1447,6 +1539,183 @@ case 'fliptext': {
                 reply(`\`\`\`FLIP TEXT \`\`\`\n*> Normal :*\n${quere}\n> Flip :*\n${flipe}`)
             }
                 break
+case 'google': {
+sam.sendMessage(from, { react: { text: "🔎", key: m.key }}) 
+if (!q) return reply(`Example : ${prefix + command} Who is Kresswell`)
+let google = require('google-it')
+google({'query': text}).then(res => {
+let teks = `「🏮 *Google Search Engine*🏮」 \n\n
+`
+for (let g of res) {
+teks += `🧧 *Title* : ${g.title}\n`
+teks += `🔮 *Description* : ${g.snippet}\n`
+teks += `📎 *Link* : ${g.link}\n\n────────────────────\n\n`
+} 
+reply(teks)
+})
+}
+break;
+case "couple":
+        {
+          if (!m.isGroup) return reply('Use this in a group');
+          let member = participants.map((u) => u.id);
+          let orang = member[Math.floor(Math.random() * member.length)];
+          let jodoh = member[Math.floor(Math.random() * member.length)];
+          sam.sendMessage(
+            m.chat,
+            {
+              text: `@${orang.split("@")[0]} ❤️ @${jodoh.split("@")[0]}
+Cieeee, What's Going On❤️💖👀`,
+              contextInfo: {
+                mentionedJid: [orang, jodoh],
+                forwardingScore: 9999999,
+                isForwarded: true,
+                externalAdReply: {
+                  showAdAttribution: true,
+                  containsAutoReply: true,
+                  title: ` Jinx V1 `,
+                  body: `Just for fun`,
+                  previewType: "PHOTO",
+                  thumbnailUrl: ``,
+                  thumbnail: fs.readFileSync(
+                    `./derived/jinx.jpg`
+                  ),
+                  sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                },
+              },
+            },
+            { quoted: m }
+          );
+        }
+        break;
+case 'nsfw':
+                if (!m.isGroup) return reply('this feature is only for groups')
+                        if (!Developer && !isAdmin) return reply('only admin can use this feature')
+                                        if (args.length < 1) return reply(`to activate type : ${prefix}nsfw 1`)
+                                        if (Number(args[0]) === 1) {
+                                                if (isNsfw) return reply('Already Activated')
+                                                nsfw.push(from)
+                                                fs.writeFileSync('./derived/nsfw.json', JSON.stringify(nsfw))
+                                                reply('Successfully activated the nsfw feature')
+                                                sam.sendMessage(from, `Free to use xnxxsearch 🗿`, text)
+                                        } else if (Number(args[0]) === 0) {
+                                                if (!isNsfw) return reply('Its off')
+                                                var ini = nsfw.indexOf(from)
+                                                nsfw.splice(ini, 1)
+                                                fs.writeFileSync('./derived/nsfw.json', JSON.stringify(nsfw))
+                                                reply('Successfully disabled the nsfw feature')
+                                        } else {
+                                                reply('1 to turn on, 0 to turn off')
+                                        }
+                                        break;
+case "antilink": case "link": { 
+                 if (!m.isGroup) throw group; 
+                 if (!isBotAdmin) throw botAdmin; 
+                 let response = await sam.groupInviteCode(m.chat); 
+                 sam.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nGroup link for  ${groupMetadata.subject}`, m, { detectLink: true }); 
+             } 
+ break;
+case "lyrics": 
+ try { 
+//if (!isPrem) return reply('This is a premium command')
+ if (!text) return reply("Provide a song name!"); 
+ const searches = await sam.songs.search(text); 
+ const firstSong = searches[0]; 
+ //await client.sendMessage(from, {text: firstSong}); 
+ const lyrics = await firstSong.lyrics(); 
+ await sam.sendMessage(from, { text: lyrics}, { quoted: m }); 
+ } catch (error) { 
+             reply(`I did not find any lyrics for ${text}. Try searching a different song.`); 
+             console.log(error); 
+         } 
+ //const artist = await Client.artists.get(456537); 
+ //await client.sendMessage(from, { text: artist} {quoted: m}); 
+ // console.log("About the Artist:\n", artist, "\n"); 
+ break ;
+case "enc":
+let forq = m.quoted ? m.quoted.text ? m.quoted.text : text ? text : m.text : m.text
+var JavaScriptObfuscator = require('javascript-obfuscator');
+if (!text && !m.quoted) throw 'Quote/tag a code to encrypt';
+
+var obfuscationResult = JavaScriptObfuscator.obfuscate(forq, 
+
+
+    {
+        compact: false,
+        controlFlowFlattening: true,
+        controlFlowFlatteningThreshold: 1,
+        numbersToExpressions: true,
+        simplify: true,
+        stringArrayShuffle: true,
+        splitStrings: true,
+        stringArrayThreshold: 1
+    }
+);
+
+console.log("successfully encrypted the code");
+reply(obfuscationResult.getObfuscatedCode());
+
+break;
+case "compile-c":
+
+if (!text && !m.quoted) throw 'Quote/tag a C code to compile';
+
+const sourcecode3 =m.quoted ? m.quoted.text ? m.quoted.text : text ? text : m.text : m.text
+let resultPromise3 = c.runSource(sourcecode3);
+resultPromise3
+    .then(resultt3 => {
+        console.log(resultt3);
+reply(resultt3.stdout);
+reply(resultt3.stderr);
+    })
+    .catch(err => {
+        console.log(resultt3.stderr);
+reply(resultt3.stderr)
+    });
+break;
+
+case "compile-c++":
+
+if (!text && !m.quoted) throw 'Quote/tag a C++ code to compile';
+
+const sourcecode4 = m.quoted ? m.quoted.text ? m.quoted.text : text ? text : m.text : m.text
+let resultPromise4 = cpp.runSource(sourcecode4);
+resultPromise4
+    .then(resultt4 => {
+        console.log(resultt4);
+reply(resultt4.stdout);
+reply(resultt4.stderr);
+    })
+    .catch(err => {
+        console.log(resultt4.stderr);
+reply(resultt4.stderr)
+    });
+break;
+case "eval":{
+   if (!Developer) throw NotOwner; 
+if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
+   try { 
+ let evaled = await eval(budy.slice(2)); 
+ if (typeof evaled !== 'string') evaled = require('util').inspect(evaled); 
+ await reply(evaled); 
+   } catch (err) { 
+ await reply(String(err)); 
+   } 
+ } 
+
+          break;
+		
+case 'snapshot':
+case 'ss':
+  try {
+    if (!text) return reply("```Uhh Please, Give me Url!```");
+    let urll = `https://api.screenshotmachine.com/?key=c04d3a&url=${encodeURIComponent(text)}&dimension=720x720`;
+    let media = await getBuffer(urll);
+    return await sam.sendMessage(m.chat, { image: media }, { quoted: m });
+  } catch (err) {
+    return reply("```Error While Fetching Snapshot```");
+  }
+  break;
 	case 'killer-jinx':{
                 if (!isPremium) return reply(mess.prem)
                 if (!text) return reply(`use ${prefix + command} number|amount\nContoh ${prefix + command} 2547xxxxxxxx,5`)
@@ -1479,6 +1748,360 @@ case 'fliptext': {
                   );
             }
                 break;
+case 'wallpaper': {
+  if (!text) throw 'Enter Query Title';
+  let { wallpaper } = require('./lib/scraper');
+  anu = await wallpaper(text);
+  result = anu[Math.floor(Math.random() * anu.length)];
+  let Message = {
+    image: { url: result.image[0] },
+    caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.type}\n⭔ Detail : ${result.source}\n⭔ Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
+  };
+  sam.sendMessage(m.chat, Message, { quoted: m });
+}
+break;
+case 'wikimedia': {
+  if (!text) throw 'Enter Query Title';
+  let { wikimedia } = require('./lib/scraper');
+  anu = await wikimedia(text);
+  result = anu[Math.floor(Math.random() * anu.length)];
+  let Message = {
+    image: { url: result.image },
+    caption: `⭔ Title : ${result.title}\n⭔ Source : ${result.source}\n⭔ Media Url : ${result.image}`,
+  };
+  sam.sendMessage(m.chat, Message, { quoted: m });
+}
+break;
+
+        case 'ringtone': {
+                if (!text) throw `Example : ${prefix + command} black rover`
+        let { ringtone } = require('./lib/scraper')
+                let anu = await ringtone(text)
+                let result = anu[Math.floor(Math.random() * anu.length)]
+                sam.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
+            }
+            break
+  case 'buypremium':
+            case 'premiumuser': {
+                let teks = `Hi ${pushname}👋\n Want to Buy Premium? Just chat with the owner😉`
+                await sam.sendMessage(m.chat, {
+                    text: teks,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: 'BUY PREMIUM',
+                            body: `3$ / MONTH`,
+                            thumbnailUrl: 'https://telegra.ph/file/0955010ca2f8bf045fb0a.jpg',
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: false
+                        }
+                    }
+                }, {
+                    quoted: m
+                })
+            }
+            break;
+case "imgs": case "ai-img": case "ai-image": case "imageus": {
+          try {
+            /*if (!isCreator) return reply('_Maaf, Command Ini Khusus Developer Bot Whatsap_*')*/
+            if (keyopenai === keyopenai)
+            if (!text) return reply(`Infinity AI.\n\nExample:\n${prefix}${command} Wooden house on snow mountain`);
+            const configuration = new Configuration({
+              apiKey: keyopenai,
+            });
+            const openai = new OpenAIApi(configuration);
+            const response = await openai.createImage({
+              prompt: text,
+              n: 1,
+              size: "512x512",
+            });
+            //console.log(response.data.data[0].url)
+            sam.sendImage(from, response.data.data[0].url, text);
+            } catch (error) {
+          if (error.response) {
+            console.log(error.response.status);
+            console.log(error.response.data);
+            console.log(`${error.response.status}\n\n${error.response.data}`);
+          } else {
+            console.log(error);
+            reply("This error occurred :"+ error.message);
+          }
+        }
+        }
+break;
+case 'telestick':{
+                if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
+                let mariaresources = await Telesticker(args[0])
+                await reply(`Sending ${mariaresources.length} stickers...`)
+                if (m.isGroup && mariaresources.length > 30) {
+                        await reply('Number of stickers more than 30, bot will send it in private chat.')
+                        for (let i = 0; i < mariaresources.length; i++) {
+                                sam.sendMessage(m.sender, { sticker: { url: mariaresources[i].url }})
+                        }
+                } else {
+                        for (let i = 0; i < mariaresources.length; i++) {
+                                sam.sendMessage(m.chat, { sticker: { url: mariaresources[i].url }})
+                        }
+                }
+        } else reply(`Where is the telegram sticker link?\nExample. ${prefix + command} https://t.me/addstickers/FriendlyDeath`)
+}
+break; 
+case 'restart':  
+  if (!Developer) throw `Jinx Owne` 
+  reply(`Restarting Jinx. .`)  
+  await sleep(3000)  
+  process.exit()  
+  break;
+case 'anime': {
+
+  if (!m.isGroup) return reply('Use this command on a group')
+  sam.sendMessage(from, { react: { text: "🍁" , key: m.key }});
+  if(!text) return reply(`Please proide a search term!\n\n*Example:* ${prefix}anime naruto`)
+
+  const malScraper = require('mal-scraper')
+  reply('Please wait...');
+          const anime = await malScraper.getInfoFromName(text).catch(() => null)
+          if (!anime) return reply(`${p}Could not find your scarch`)
+  let animetxt = `
+  🎀 *Title: ${anime.title}*
+  🎋 *Type: ${anime.type}*
+  🎐 *Premiered on: ${anime.premiered}*
+  💠 *Total Episodes: ${anime.episodes}*
+  📈 *Status: ${anime.status}*
+  💮 *Genres: ${anime.genres}
+  📍 *Studio: ${anime.studios}*
+  🌟 *Score: ${anime.score}*
+  💎 *Rating: ${anime.rating}*
+  🏅 *Rank: ${anime.ranked}*
+  💫 *Popularity: ${anime.popularity}*
+  ♦️ *Trailer: ${anime.trailer}*
+  🌐 *URL: ${anime.url}*
+  ❄ *Description:* ${anime.synopsis}*`
+                  await sam.sendMessage(m.chat,{image:{url:anime.picture}, caption:animetxt},{quoted:m})
+                  }
+                  break;
+case 'broadcastgc':
+            case 'bcgroup': {
+                if (!Developer) return reply('You are not my Owner')
+                if (!text) return reply(`Which text?\n\nExample : ${prefix + command} It's holiday tomorrow `)
+                let getGroups = await client.groupFetchAllParticipating()
+                let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+                let anu = groups.map(v => v.id)
+                reply(`Send Broadcast To ${anu.length} Group Chat, End Time ${anu.length * 1.5} second`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    let a = '```' + `ʙʀᴏᴀᴅᴄᴀsᴛ ᴍᴇssᴀɢᴇ\n\n${text}\n\n` + '```' + '\n\n\n𝙹𝙸𝙽𝚇 𝙰𝙸'
+                    client.sendMessage(i, {
+                        text: a,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: '□Paid BroadCast□',
+                                body: `Sent ${i.length} Group`,
+                                thumbnailUrl: 'https://i.imgur.com/pFHxvfE.jpeg',
+                                sourceUrl: global.link,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
+                    })
+                }
+                reply(`Successfully Sent Broadcast To ${anu.length} Group`)
+            }
+            break;
+case 'antilinkgc': {
+                            if (!m.isGroup) return reply('Group command ')
+                if (!isAdmin && !Owner) return reply('Admin Command')
+                if (!isBotAdmin) return reply('You need a medical check!')
+if (args[0] === "on") {
+if (AntiLinkAll) return reply('Already activated')
+ntilinkall.push(from)
+fs.writeFileSync('./derived/antilink.json', JSON.stringify(ntilinkall))
+reply('Success in turning on all antilink in this group')
+var groupe = await client.groupMetadata(from)
+var members = groupe['participants']
+var mems = []
+members.map(async adm => {
+mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
+})
+sam.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send any link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+} else if (args[0] === "off") {
+if (!AntiLinkAll) return reply('Already deactivated')
+let off = ntilinkall.indexOf(from)
+ntilinkall.splice(off, 1)
+fs.writeFileSync('./derived/antilinkall.json', JSON.stringify(ntilinkall))
+reply('Success in turning off all antilink in this group')
+} else {
+  await reply(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  }
+  }
+  break;
+case 'weather':
+       
+        sam.sendMessage(from, { react: { text: "🛰", key: m.key }}) 
+        if (!args[0]) return reply("Enter your location to search weather.")
+        myweather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args.join(" ")}&units=metric&appid=e409825a497a0c894d2dd975542234b0&language=tr`)
+
+        const weathertext = `           🌤 *Weather Report* 🌤  \n\n🔎 *Search Location:* ${myweather.data.name}\n*💮 Country:* ${myweather.data.sys.country}\n🌈 *Weather:* ${myweather.data.weather[0].description}\n🌡️ *Temperature:* ${myweather.data.main.temp}°C\n❄️ *Minimum Temperature:* ${myweather.data.main.temp_min}°C\n📛 *Maximum Temperature:* ${myweather.data.main.temp_max}°C\n💦 *Humidity:* ${myweather.data.main.humidity}%\n🎐 *Wind:* ${myweather.data.wind.speed} km/h\n`
+        sam.sendMessage(from, { video: { url: 'https://media.tenor.com/bC57J4v11UcAAAPo/weather-sunny.mp4' }, gifPlayback: true, caption: weathertext }, { quoted: m })
+
+        break;
+case 'nsfwmenu':
+        if (!isNsfw) return reply(NotNsfw);
+        if (!m.isGroup) return reply(group);
+
+        const nsfwmenu=`┌──⊰ _*🔞NSFW 🔞*_
+│⊳ 💦  ${prefix}blowjob
+│⊳ 💦  ${prefix}cum
+│⊳ 💦  ${prefix}foot
+│⊳ 💦  ${prefix}gangbang
+│⊳ 💦  ${prefix}hentai
+│⊳ 💦  ${prefix}pussy
+│⊳ 💦  ${prefix}ass
+│⊳ 💦  ${prefix}trap
+│⊳ 💦  ${prefix}maal
+│⊳ 💦  ${prefix}ʀɪʙʙᴏɴꜱ
+│⊳ 💦  ${prefix}ʜᴀᴛꜱᴜɴᴇᴍɪᴋᴜ
+│⊳ 💦  ${prefix}ʜᴇᴀᴅʙᴀɴᴅ
+│⊳ 💦  ${prefix}ꜰᴏxɢɪʀʟ
+│⊳ 💦  ${prefix}ᴀɴɪᴍᴀʟᴇᴀʀꜱ
+│⊳ 💦  ${prefix}ʙʀᴀ
+│⊳ 💦  ${prefix}ꜱᴋɪʀᴛ
+│⊳ 💦  ${prefix}ʙʀᴇᴀꜱᴛꜱ
+│⊳ 💦  ${prefix}ᴛᴀᴛᴛᴏᴏ
+│⊳ 💦  ${prefix}ᴄʜᴀɪɴ
+└──────────⊰ 
+`
+   sam.sendMessage(m.chat, { image: { url: "./derived/jinx.jpg" }, caption: nsfwmenu }, { quoted: m });
+        break;
+case "xnxxdl": {
+if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
+//if (!isPrem) return reply('This is a premium command')
+        if (!m.isGroup) return reply ('Group command')
+        if (!text) return reply(`Enter Url`)
+        if (!text.includes('xnxx.com')) return reply(`Enter an xnxx link`)
+        reply('Please wait')
+        const fg = require('api-dylux')
+            let xn = await fg.xnxxdl(text)
+sam.sendMessage(m.chat, { caption: `≡  *XNXX DL BY JINX*
+        
+▢ *📌Title*: ${xn.title}
+▢ *⌚Duration:* ${xn.duration}
+▢ *🎞️Quality:* ${xn.quality}
+`, video: {url: xn.url_dl} }, { quoted: m })
+}
+break;
+case 'xnxxsearch': {
+if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
+//if (!isPrem) return reply('This is a premium command')
+        if (!m.isGroup) return reply('Group command')
+        if (!text) return reply(`Enter Query`)
+        reply('Please wait')
+        const fg = require('api-dylux')
+        let res = await fg.xnxxSearch(text)
+            let ff = res.result.map((v, i) => `${i + 1}┃ *Title* : ${v.title}\n*Link:* ${v.link}\n`).join('\n') 
+              if (res.status) reply(ff)
+              }
+              break;
+case 'poll': {
+           if (!m.isGroup) throw group
+            let [poll, opt] = text.split("|")
+            if (text.split("|") < 2)
+                return await reply(
+                    `Mention question and atleast 2 options\nExample: ${prefix}poll Who is best admin?|Kresswell,Spider,ZzeroMind...`
+                )
+            let options = []
+            for (let i of opt.split(',')) {
+                options.push(i)
+            }
+            await sam.sendMessage(m.chat, {
+                poll: {
+                    name: poll,
+                    values: options
+                }
+            })
+        }
+        break;
+case 'chain':
+case 'tattoo':
+case 'breasts':
+case 'skirt':
+case 'bra':
+case 'animalears':
+case 'foxgirl':
+case 'headband':
+case 'hatsunemiku':
+case 'ribbons':
+    if (!m.isGroup) return reply(group);
+    if (!isNsfw) return reply(NotNsfw);
+    const waifpoudd = await axios.get(`https://fantox-apis.vercel.app/${command}`);
+    sam.sendMessage(m.chat, { caption: 'OMG🥵', image: { url: waifpoudd.data.url } }, { quoted: m });
+    break;
+            case 'checkdeath':
+             if (!text) return reply(`Use Someone's Name, Example : ${prefix + command} Kresswell `)
+              predea = await axios.get(`https://api.agify.io/?name=${q}`)
+              reply(`Name : ${predea.data.name}\n*Dead At Age :* ${predea.data.age} Year.\n\n_Quick, Quick, Repent Bro, Because No One Knows About Death_`)
+              break;
+
+case 'maal': {
+  if (!isNsfw) return reply(NotNsfw);
+  if (!m.isGroup) return reply(group);
+  reply('Please wait..');
+  await sam.sendMessage(m.chat, {
+    image: await getBuffer('https://ayushhh.onrender.com'),
+    caption: 'OMG 🥵',
+  }, { quoted: m });
+}
+break;
+case 'ghsearch': 
+       case 'githubsearch': 
+       case 'searchgithub':
+             if (!q) return reply('*What are you looking for?*')
+             let pomi = await fetch('https://api.github.com/search/repositories?q='+q)
+            let dhumi = await pomi.json()
+             if (pomi.status !== 200) throw dhumi
+             str = dhumi.items.map((repo, index) => {
+             return `
+${1 + index}. *${repo.full_name}*${repo.fork ? '*FORKS*' : ''}
+${repo.html_url}
+*CREATED ON:* ${formatDate(repo.created_at)}
+*LAST UPDATED ON:* ${formatDate(repo.updated_at)}
+👁  ${repo.watchers}   🍴  ${repo.forks}   ⭐ ${repo.stargazers_count}
+${repo.open_issues} *ISSUES:*${repo.description ? `
+*DESCRIPTION:*\n${repo.description}` : ''}
+*CLONE:* $ git clone ${repo.clone_url}
+`.trim()
+}).join('\n\n')
+            reply(str)
+break;
+case "advice":
+reply(advice());
+console.log(advice());
+case 'system': case 'info': case 'ram': case 'usage':
+mainSys();
+break;
+case 'fbdl': case 'fb': case 'facebook': case 'fbmp4': {                 
+
+        if (!text) return reply(`Please provide the link!\n\nExample: ${prefix}fbdl https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
+           if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
+       let bocil = require('@bochilteam/scraper')  
+           bocil.facebookdlv2(`${text}`).then(async (data) => {                   
+               let txt = `「 _Facebook Downloader_ 」\n\n`
+               txt += `*Title :* ${data.title}\n`
+               txt += `*Quality :* ${data.result[0].quality}\n`
+               txt += `*Description:* ${data.description}\n`
+               txt += `*URL :* ${text}\n\n`
+           buf = await getBuffer(data.thumbnail)    
+           sam.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })         
+           for (let i of data.result) {     
+           sam.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*Quality :* ${i.quality}`}, { quoted: m })
+           }          
+           }).catch((err) => {
+               reply('An error Occured')
+           })
+       }
+       break;
 case 'delowner':
                 if (!isDeveloper) return reply(mess.owner)
                 if (!args[0]) return reply(`Use ${prefix + command} number\nExample ${prefix + command} 254712345667`)
