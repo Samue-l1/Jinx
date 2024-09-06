@@ -179,6 +179,7 @@ const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).include
 //=================================================//
 const samido = fs.readFileSync(path.resolve(__dirname, './derived/menu.mp3'))
 const jinx = fs.readFileSync(path.resolve(__dirname, './derived/jinx.jpg'))
+const advice = require("badadvice");
 //=================================================//
 const from = m.chat;
 //
