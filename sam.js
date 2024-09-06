@@ -161,8 +161,8 @@ const isMedia = /image|video|sticker|audio/.test(mime)
 //User
 const botNumber = await sam.decodeJid(sam.user.id)
 const itsMe = m.sender == botNumber ? true : false
-const itsOrkay = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../grab/premium.json'), 'utf8'))
-const kontributor = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../grab/owner.json'), 'utf8'))
+const itsOrkay = JSON.parse(fs.readFileSync(path.resolve(__dirname, './grab/premium.json'), 'utf8'))
+const kontributor = JSON.parse(fs.readFileSync(path.resolve(__dirname, './grab/owner.json'), 'utf8'))
 const isDeveloper = [ botNumber, ...kontributor, ...global.ownMain ].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
 const isPremium = [ botNumber, ...kontributor, ...itsOrkay, ...global.ownMain ].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
 //=================================================//
