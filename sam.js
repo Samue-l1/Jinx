@@ -176,7 +176,6 @@ const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isGroup = m.chat.endsWith('@g.us')
 const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
-const AntiLinkAll = m.isGroup ? antilinkall.includes(from) : false;
 //=================================================//
 const samido = fs.readFileSync(path.resolve(__dirname, './derived/menu.mp3'))
 const jinx = fs.readFileSync(path.resolve(__dirname, './derived/jinx.jpg'))
