@@ -181,6 +181,8 @@ const isNsfw = m.isGroup ? nsfw.includes(from) : false;
 //=================================================//
 const samido = fs.readFileSync(path.resolve(__dirname, './derived/menu.mp3'))
 const jinx = fs.readFileSync(path.resolve(__dirname, './derived/jinx.jpg'))
+let antilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
+const nsfw = JSON.parse(fs.readFileSync('./derived/nsfw.json'))
 const advice = require("badadvice");
 //=================================================//
 const from = m.chat;
