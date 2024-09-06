@@ -1,12 +1,12 @@
  
 
-<h1 align="center">ꪶ𝘾𝙡𝙖𝙨𝙨𝙞𝙘 𝗕𝗼𝘁-𝗩3ꫂ<br></h1>
+<h1 align="center">ꪶ𝙅𝙄𝙉𝙓-𝗩1ꫂ<br></h1>
 <p align="center">
 <img src=""/>
 </p>
 
 <p align="center">
-𝘾𝙡𝙖𝙨𝙨𝙞𝙘 𝘽𝙤𝙩 Multi Device is a whatsapp bot created by <a href="https://github.com/Samu-el1" target="_blank">Sam</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs</a>. Dont forget to give a star bro.
+𝙅𝙄𝙉𝙓 𝘽𝙤𝙩 Multi Device is a whatsapp bot created by <a href="https://github.com/Samu-el1" target="_blank">Sam</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs</a>. Dont forget to give a star bro.
 </p>
 
 
@@ -18,7 +18,7 @@
 <a href="https://github.com/Samue-l1/followers"><img title="Followers" src="https://img.shields.io/github/followers/Samue-l1?color=red&style=flat-square"></a>
 <a href="https://github.com/Samue-l1/Jinx/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/Samue-l1/Classic-v3-BUG?color=blue&style=flat-square"></a>
 <a href="https://github.com/Samue-l1/Jinx/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Samue-l1/Jinx?color=red&style=flat-square"></a>
-<a href="https://github.com/Samue-l1/Classic-v3-BUG/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/Samue-l1/Jinx?label=Watchers&color=blue&style=flat-square"></a>
+<a href="https://github.com/Samue-l1/Jinx/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/Samue-l1/Jinx?label=Watchers&color=blue&style=flat-square"></a>
 <a href="https://github.com/Samue-l1/Jinx"><img title="Open Source" src="https://img.shields.io/badge/Author-Classic%20Bot%20Inc.-red?v=103"></a>
 <a href="https://github.com/Samue-l1/Jinx/"><img title="Size" src="https://img.shields.io/github/repo-size/Samue-l1/Classic-v3-BUG?style=flat-square&color=green"></a>
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Samue-l1%2FJinx&count_bg=%2379C83D&title_bg=%23555555&icon=probot.svg&icon_color=%2300FF6D&title=hits&edge_flat=false"/></a>
