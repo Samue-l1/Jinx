@@ -1,6 +1,6 @@
 {
-    "name": "Spider-v7",
-    "version": "7.0.0",
+    "name": "Jinx-v1",
+    "version": "1.0.0",
     "description": "Private WhatsApp bot",
     "main": "index.js",
     "scripts": {
@@ -12,6 +12,8 @@
         "@whiskeysockets/baileys": "latest",
         "@adiwajshing/keyed-db": "^0.2.4",
         "@colors/colors": "^1.6.0",
+        "badadvice": "^1.0.0",
+        "javascript-obfuscator": "^4.1.0",
         "@hapi/boom": "^10.0.0",
         "api-dylux": "^1.8.4",
         "awesome-phonenumber": "^2.70.0",
