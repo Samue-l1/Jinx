@@ -176,8 +176,6 @@ const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isGroup = m.chat.endsWith('@g.us')
 const groupOwner = m.isGroup ? groupMetadata.owner : ''
 const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
-const isNsfw = m.isGroup ? nsfw.includes(from) : true;
-const NotNsfw = process.env.NSFWMSG || 'Nsfw is not activated here';
 const AntiLinkAll = m.isGroup ? antilinkall.includes(from) : false;
 //=================================================//
 const samido = fs.readFileSync(path.resolve(__dirname, './derived/menu.mp3'))
