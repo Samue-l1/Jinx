@@ -1099,6 +1099,7 @@ let osy = `
  ┃ ✰ hidetag
  ┃ ✰ tagall
  ┃ ✰ poll
+ ┃ ✰ anime
  ┃ ✰ nsfwmenu
  ┃ ✰ welcome 
  ┃ ✰ couple
@@ -1150,7 +1151,7 @@ let pesy = `
  ┃ ✰ compile-c
  ┃ ✰ eval
  ┃ ✰ telestick
- ┃ ✰ anime
+ ┃ ✰ take/steal
  ┃ ✰ weather
  ┃ ✰ advice
  ┃ ✰ sound1-160
@@ -1333,6 +1334,13 @@ let latensi = speed() - timestamp
          m.reply (`\n\━━━━━━━━━━━━━━━━━\n\✫ ${ucapanWaktu}\n\━━━━━━━━━━━━━━━━━\n\◉ ${m.pushName}\n\━━━━━━━━━━━━━━━━━\n\◈ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)} 𝐌𝐒\n\━━━━━━━━━━━━━━━━━`); 
          } 
  break; 
+case "script": case "repo": case "sc": { 
+let timestamp = speed()
+let latensi = speed() - timestamp
+
+         m.reply (`\n\━━━━━━━━━━━━━━━━━\n\✫ ${ucapanWaktu}\n\━━━━━━━━━━━━━━━━━\n\◉ ${m.pushName}\n\━━━━━━━━━━━━━━━━━\n\◈ 𝐉𝐢𝐧𝐱 𝐒𝐩𝐞𝐞𝐝 : ${latensi.toFixed(4)} 𝐌𝐒\n\━━━━━━━━━━━━━━━━━\n\━━━━━━━━━━━━━━━━━\n\⦁ 𝐅𝐨𝐫𝐤 𝐚𝐧𝐝 𝐒𝐭𝐚𝐫 𝐭𝐡𝐞 𝐑𝐞𝐩𝐨 : https://github.com/Samue-l1/Jinx/fork\n\━━━━━━━━━━━━━━━━━\n\⦁ 𝐄𝐧𝐣𝐨𝐲 𝐭𝐡𝐞 𝐁𝐨𝐭\n\━━━━━━━━━━━━━━━━━`); 
+         } 
+ break; 
 //=====≠==================================//
 case "jinx": { 
   
@@ -1485,21 +1493,11 @@ let response = await sam.groupInviteCode(m.chat)
 sam.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`, m, { detectLink: true })
  await reaction(m.chat, "🦄")}
 break
-case "owner": {
-const repf = await sam.sendMessage(from, { 
-contacts: { 
-displayName: `${list.length} Contacts`, 
-contacts: list }, contextInfo: {
-forwardingScore: 9999999, 
-isForwarded: true,
-mentionedJid: [sender]
-}}, { quoted: m })
-sam.sendMessage(from, { text : `Hello @${sender.split("@")[0]}, My owner is 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`, contextInfo:{
-forwardingScore: 9999999, 
-isForwarded: true,
-mentionedJid:[sender]
-}}, { quoted: repf })
+case 'owner': case 'creator':{
+await loadings()
+ sam.sendContact(from, global.owner, m)
 }
+break
 //=================================================//
 case 'resetlinkgc': case 'revoke': {
 if (!isGroup) return reply(mess.ingroup)
